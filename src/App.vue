@@ -1,18 +1,24 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+<script lang="ts">
+import AppFooter from "./components/AppFooter.vue";
+export default {
+  data() {
+    return {
+      year: 2022,
+      links: [
+        { url: "/", name: "Home" },
+        { url: "/about/", name: "About" },
+      ],
+    };
+  },
+  components: { AppFooter },
+};
 </script>
 
 <template>
-  <header>
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
-    </nav>
-  </header>
-
   <RouterView />
+  <AppFooter :links="links" :year="year" />
 </template>
 
 <style>
-@import '@/assets/style.css';
+@import "@/assets/style.css";
 </style>
