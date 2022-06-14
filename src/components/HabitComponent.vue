@@ -1,10 +1,17 @@
-<script>
+<script lang="ts">
+import { defineComponent } from "@vue/runtime-core";
 import axios from "axios";
-export default {
-  props: ["id"],
+export default defineComponent({
+  props: {
+    id: Number,
+  },
   data() {
     return {
-      title: NaN,
+      name: NaN, // type: string | undefined
+      description: NaN, // type: string | undefined
+      negative: NaN, // type: bool | undefined
+      active: NaN, // type: bool | undefined
+      user: NaN, // type: number | undefined
     };
   },
   methods: {
@@ -13,16 +20,20 @@ export default {
     },
     fetchData() {
       const url = "http://localhost:8000/api/v1/habits/" + this.id;
-      console.log("Updating HabitComponent for " + url);
-      axios
-        .get(url)
+      axios({
+        url: url,
+        method: "get",
+      })
         .then((res) => {
-          this.title = res.name;
+          this.active = res.data.active;
+          this.description = res.data.description;
+          this.name = res.data.name;
+          this.negative = res.data.negative;
+          this.user = res.data.user;
         })
-        .catch(function (error) {
-          console.log(error);
-        })
-        .then(console.log(123));
+        .catch((error) => {
+          console.error(error);
+        });
     },
   },
   mounted() {
@@ -31,17 +42,18 @@ export default {
   updated() {
     this.fetchData();
   },
-};
+});
 </script>
+
 <template>
-  <div class="habit-component shadow">
-    <h3>{{ title }}</h3>
+  <div class="habit-component card rounded shadow">
+    <h3>{{ name }}</h3>
     <button class="btn" @click="done">Ok</button>
   </div>
 </template>
+
 <style scoped>
 .habit-component {
-  min-width: 150px;
-  min-height: 50px;
+  padding: 5px;
 }
 </style>
