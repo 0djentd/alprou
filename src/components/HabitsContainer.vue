@@ -13,7 +13,7 @@ export default {
 
 <template>
   <div class="habits-container card">
-    <HabitComponent v-for="habit in habits" :key="habit.id" />
+    <HabitComponent v-for="habit in habits" :key="habit.id" :id="habit.id" />
   </div>
 </template>
 

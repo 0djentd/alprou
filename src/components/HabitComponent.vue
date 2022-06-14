@@ -1,15 +1,35 @@
 <script>
+import axios from "axios";
 export default {
-  props: ["url"],
+  props: ["id"],
   data() {
     return {
-      title: "title",
+      title: NaN,
     };
   },
   methods: {
     done() {
-      return;
+      this.fetchData();
     },
+    fetchData() {
+      const url = "http://localhost:8000/api/v1/habits/" + this.id;
+      console.log("Updating HabitComponent for " + url);
+      axios
+        .get(url)
+        .then((res) => {
+          this.title = res.name;
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+        .then(console.log(123));
+    },
+  },
+  mounted() {
+    this.fetchData();
+  },
+  updated() {
+    this.fetchData();
   },
 };
 </script>
