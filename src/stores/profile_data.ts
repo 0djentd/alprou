@@ -7,6 +7,7 @@ export const useProfileDataStore = defineStore("profile_data", {
       username: NaN,
       profile_image: NaN,
       background_image: NaN,
+      token: NaN,
     };
   },
 });
