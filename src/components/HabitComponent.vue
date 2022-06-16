@@ -56,7 +56,7 @@ export default defineComponent({
         method: "get",
         headers: {
           Authorization: authorization,
-        }
+        },
       })
         .then((res) => {
           this.active = res.data.active;

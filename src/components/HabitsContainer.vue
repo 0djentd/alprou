@@ -1,5 +1,5 @@
 <script>
-import axios from 'axios';
+import axios from "axios";
 import HabitComponent from "./HabitComponent.vue";
 export default {
   components: { HabitComponent },
