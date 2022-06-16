@@ -1,6 +1,6 @@
 <script>
 import axios from "axios";
-import { useProfileDataStore } from '../stores/profile_data';
+import { useProfileDataStore } from "../stores/profile_data";
 export default {
   data() {
     return {
@@ -23,6 +23,7 @@ export default {
       })
         .then((res) => {
           const token = res.data.token;
+          window.location.href = "/";
           localStorage.setItem("token", token);
         })
         .catch((error) => {
@@ -36,26 +37,33 @@ export default {
 <template>
   <main class="w-50 m-auto">
     <h1>Login</h1>
-    <div>
-      <input id="username" placeholder="Username" v-model="this.username" />
-    </div>
-    <div>
+    <form>
+      <div>
+        <input id="username" placeholder="Username" v-model="this.username" />
+      </div>
+      <div>
+        <input
+          type="password"
+          id="password"
+          placeholder="Password"
+          v-model="this.password"
+        />
+      </div>
       <input
-        type="password"
-        id="password"
-        placeholder="Password"
-        v-model="this.password"
+        type="checkbox"
+        name="remember"
+        id="remember"
+        v-model="this.remember"
       />
-    </div>
-    <input
-      type="checkbox"
-      name="remember"
-      id="remember"
-      v-model="this.remember"
-    />
-    <label for="remember">Remember</label>
-    <button action="" method="" class="btn btn-primary" @click="login">
-      Login
-    </button>
+      <label for="remember">Remember</label>
+      <button
+        action=""
+        method=""
+        class="btn btn-primary"
+        @click.prevent="login"
+      >
+        Login
+      </button>
+    </form>
   </main>
 </template>
