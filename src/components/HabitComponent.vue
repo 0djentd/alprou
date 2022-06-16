@@ -50,13 +50,16 @@ export default defineComponent({
         .finally(this.fetchData());
     },
     fetchData() {
+      const authorization = "Token " + localStorage.getItem("token");
       axios({
         url: this.get_url(),
         method: "get",
+        headers: {
+          Authorization: authorization,
+        }
       })
         .then((res) => {
           this.active = res.data.active;
-          this.description = res.data.description;
           this.name = res.data.name;
           this.negative = res.data.negative;
           this.user = res.data.user;
