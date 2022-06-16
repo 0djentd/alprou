@@ -17,10 +17,13 @@ export default defineComponent({
     };
   },
   methods: {
+    get_url() {
+      const url = "http://localhost:8000/api/habits/" + this.id + "/";
+      return url;
+    },
     done() {
-      const url = "http://localhost:8000/api/v1/habits/" + this.id;
       axios({
-        url: url,
+        url: this.get_url(),
         method: "patch",
         data: {},
       })
@@ -33,9 +36,8 @@ export default defineComponent({
         .finally(this.fetchData());
     },
     remove() {
-      const url = "http://localhost:8000/api/v1/habits/" + this.id;
       axios({
-        url: url,
+        url: this.get_url(),
         method: "delete",
       })
         .then((res) => {
@@ -48,9 +50,8 @@ export default defineComponent({
         .finally(this.fetchData());
     },
     fetchData() {
-      const url = "http://localhost:8000/api/v1/habits/" + this.id;
       axios({
-        url: url,
+        url: this.get_url(),
         method: "get",
       })
         .then((res) => {
