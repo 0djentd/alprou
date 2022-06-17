@@ -1,5 +1,6 @@
 <script>
 import axios from "axios";
+import { api_url } from "@/config";
 import HabitComponent from "./HabitComponent.vue";
 export default {
   components: { HabitComponent },
@@ -12,7 +13,7 @@ export default {
   mounted() {
     const authorization = "Token " + localStorage.getItem("token");
     axios({
-      url: "http://localhost:8000/api/habits/",
+      url: api_url + "habits/",
       method: "GET",
       headers: {
         Authorization: authorization,
@@ -31,7 +32,7 @@ export default {
 
 <template>
   <div v-if="loaded" class="habits-container card">
-    <HabitComponent v-for="habit in habits" :key="habit.id" :id="habit.id" />
+    <HabitComponent v-for="habit in habits" :key="habit.id" :url="habit.url" />
   </div>
 </template>
 

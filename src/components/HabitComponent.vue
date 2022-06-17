@@ -3,27 +3,18 @@ import { defineComponent } from "@vue/runtime-core";
 import axios from "axios";
 export default defineComponent({
   props: {
-    id: Number,
+    url: String,
   },
   data() {
     return {
-      name: NaN, // type: string | undefined
-      description: NaN, // type: string | undefined
-      negative: NaN, // type: bool | undefined
-      active: NaN, // type: bool | undefined
-      user: NaN, // type: number | undefined
-      url: NaN, // type: string | undefined
-      visible: false, // type: bool
+      data: NaN,
+      loaded: false,
     };
   },
   methods: {
-    get_url() {
-      const url = "http://localhost:8000/api/habits/" + this.id + "/";
-      return url;
-    },
     done() {
       axios({
-        url: this.get_url(),
+        url: this.url,
         method: "patch",
         data: {},
       })
@@ -37,12 +28,12 @@ export default defineComponent({
     },
     remove() {
       axios({
-        url: this.get_url(),
+        url: this.url,
         method: "delete",
       })
         .then((res) => {
           console.log(res);
-          this.visible = false;
+          this.loaded = false;
         })
         .catch((error) => {
           console.error(error);
@@ -52,39 +43,32 @@ export default defineComponent({
     fetchData() {
       const authorization = "Token " + localStorage.getItem("token");
       axios({
-        url: this.get_url(),
+        url: this.url,
         method: "get",
         headers: {
           Authorization: authorization,
         },
       })
         .then((res) => {
-          this.active = res.data.active;
-          this.name = res.data.name;
-          this.negative = res.data.negative;
-          this.user = res.data.user;
-          this.url = res.data.url;
-          this.visible = true;
+          this.data = res.data;
+          this.loaded = true;
         })
         .catch((error) => {
           console.error(error);
-          this.visible = false;
+          this.loaded = false;
         });
     },
   },
   mounted() {
     this.fetchData();
   },
-  updated() {
-    this.fetchData();
-  },
 });
 </script>
 
 <template>
-  <div v-if="visible" class="habit-component card rounded shadow">
-    <h3>{{ name }}</h3>
-    <p>{{ description }}</p>
+  <div v-if="this.loaded" class="habit-component card rounded shadow">
+    <h3>{{ data.name }}</h3>
+    <p>{{ data.description }}</p>
     <button class="btn" @click="done">Ok</button>
     <button class="btn" @click="remove">x</button>
   </div>
