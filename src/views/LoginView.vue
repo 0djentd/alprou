@@ -1,5 +1,4 @@
 <script>
-import axios from "axios";
 import { useProfileDataStore } from "../stores/profile_data";
 export default {
   data() {
@@ -12,23 +11,7 @@ export default {
   },
   methods: {
     login() {
-      const url = "http://localhost:8000/api/authtoken/";
-      axios({
-        url: url,
-        method: "POST",
-        data: {
-          username: this.username,
-          password: this.password,
-        },
-      })
-        .then((res) => {
-          const token = res.data.token;
-          window.location.href = "/";
-          localStorage.setItem("token", token);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+      this.profile_data.login(this.username, this.password);
     },
   },
 };

@@ -7,11 +7,17 @@ export const useProfileDataStore = defineStore("profile_data", {
     return {
       loggedIn: false, //type: bool
       profile: NaN,
-      token: NaN, //type: string
+      token: NaN, //type: string | undefined
     };
   },
+  getters: {
+    get_token() {
+      const token = localStorage.getItem("token");
+      return token;
+    },
+  },
   actions: {
-    getToken(username: string, password: string) {
+    login(username: string, password: string) {
       console.log("Trying to login as " + username);
       axios({
         // FIXME
@@ -35,7 +41,8 @@ export const useProfileDataStore = defineStore("profile_data", {
       console.log("Trying to fetch profile data");
       if (!this.loggedIn) {
         window.location.href = "/login/";
-      }
+      };
+      this.token = localStorage.getItem("token");
       const authorization = "Token " + localStorage.getItem("token");
       axios({
         // FIXME
