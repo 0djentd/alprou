@@ -6,8 +6,8 @@ export const useProfileDataStore = defineStore("profile_data", {
   state: () => {
     return {
       loggedIn: false, //type: bool
-      profile: NaN,
-      token: NaN, //type: string | undefined
+      profile: null,
+      token: null, //type: string | undefined
     };
   },
   getters: {
@@ -20,18 +20,19 @@ export const useProfileDataStore = defineStore("profile_data", {
     login(username: string, password: string) {
       console.log("Trying to login as " + username);
       axios({
-        // FIXME
         url: api_url + "authtoken/",
-        method: "GET",
+        method: "POST",
         data: {
           username: username,
           password: password,
         },
       })
         .then((response) => {
-          console.log("Logged in");
-          localStorage.setItem("token", response.data.token);
+          const token = response.data.token;
+          localStorage.setItem("token", token);
+          this.token = token;
           this.fetchData();
+          console.log("Logged in");
         })
         .catch((error) => {
           console.error(error);
@@ -42,11 +43,10 @@ export const useProfileDataStore = defineStore("profile_data", {
       if (!this.loggedIn) {
         window.location.href = "/login/";
       };
-      this.token = localStorage.getItem("token");
-      const authorization = "Token " + localStorage.getItem("token");
+      const authorization = "Token " + this.token;
       axios({
         // FIXME
-        url: api_url + "profiles/2",
+        url: api_url + "profiles/2/",
         method: "GET",
         headers: {
           Authorization: authorization,

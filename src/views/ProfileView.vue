@@ -1,12 +1,14 @@
-<script>
-import useProfileDataStore from "../stores/profile_data";
-export default {
+<script lang="ts">
+import { useProfileDataStore } from "../stores/profile_data";
+import { defineComponent } from "vue";
+
+export default defineComponent({
   data() {
     return {
       profile_data: useProfileDataStore(),
     };
   },
-};
+});
 </script>
 
 <template>
