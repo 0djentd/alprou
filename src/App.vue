@@ -1,6 +1,6 @@
 <script lang="ts">
 import AppFooter from "./components/AppFooter.vue";
-import { useProfileDataStore } from './stores/profile_data';
+import { useProfileDataStore } from "./stores/profile_data";
 export default {
   data() {
     return {
