@@ -32,7 +32,7 @@ export default {
 
 <template>
   <div v-if="loaded" class="habits-container card">
-    <HabitComponent v-for="habit in habits" :key="habit.id" :url="habit.url" />
+    <HabitComponent v-for="habit in habits" :key="habit.id" :habit="habit" />
   </div>
 </template>
 
