@@ -49,7 +49,7 @@ export default defineComponent({
   <div
     v-if="!this.removed"
     @click.prevent="done()"
-    class="habit-component card rounded shadow"
+    class="habit-component btn card rounded shadow"
   >
     <h3>{{ habit.name }}</h3>
     <p>{{ habit.description }}</p>
