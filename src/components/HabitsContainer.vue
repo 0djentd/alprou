@@ -39,5 +39,8 @@ export default {
         :url="habit.url"
       />
     </div>
+    <div v-else>
+      <div class="spinner-border"></div>
+    </div>
   </div>
 </template>

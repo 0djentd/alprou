@@ -7,7 +7,7 @@ export default defineComponent({
   },
   data() {
     return {
-      habit: {},
+      habit: null,
       removed: false,
     };
   },
@@ -67,19 +67,26 @@ export default defineComponent({
 </script>
 
 <template>
-  <div
-    v-if="!this.removed"
-    @click.prevent="done()"
-    :id="'#habit-' + this.habit.id"
-    :class="
-      this.habit.completed_today
-        ? 'btn m-2 rounded-pill shadow disabled'
-        : 'btn btn-outline-dark m-2 rounded-pill shadow'
-    "
-  >
-    <h3 class="d-inline">
-      {{ habit.name }}
-      <!--       <span :if="this.habit" class="badge bg-secondary">3</span> -->
-    </h3>
+  <div v-if="this.habit != null">
+    <div
+      v-if="!this.removed"
+      @click.prevent="done()"
+      :id="'#habit-' + this.habit.id"
+      :class="
+        this.habit.completed_today
+          ? 'btn m-2 rounded-pill shadow disabled'
+          : 'btn btn-outline-dark m-2 rounded-pill shadow'
+      "
+    >
+      <h3 class="d-inline">
+        {{ habit.name }}
+        <!--       <span :if="this.habit" class="badge bg-secondary">3</span> -->
+      </h3>
+    </div>
+  </div>
+  <div v-else>
+    <div class="btn m-2 rounded-pill shadow disabled">
+      <div class="spinner-border mx-4"></div>
+    </div>
   </div>
 </template>
