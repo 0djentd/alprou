@@ -31,15 +31,7 @@ export default {
 </script>
 
 <template>
-  <div v-if="loaded" class="habits-container card">
+  <div v-if="loaded" class="d-flex flex-wrap">
     <HabitComponent v-for="habit in habits" :key="habit.id" :habit="habit" />
   </div>
 </template>
-
-<style scoped>
-.habits-container {
-  min-height: 300px;
-  min-width: 500px;
-  margin: 0 50px;
-}
-</style>
