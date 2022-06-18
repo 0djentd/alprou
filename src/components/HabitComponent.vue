@@ -13,6 +13,9 @@ export default defineComponent({
   },
   methods: {
     async done() {
+      if (this.habit.completed_today == true) {
+        return;
+      }
       const authorization = "Token " + localStorage.getItem("token");
       await axios({
         url: this.habit.url + "done/",
@@ -24,6 +27,7 @@ export default defineComponent({
       })
         .then((res) => {
           console.log(res);
+          this.fetchData();
         })
         .catch((error) => {
           console.error(error);
@@ -58,7 +62,7 @@ export default defineComponent({
   },
   mounted() {
     this.fetchData();
-  }
+  },
 });
 </script>
 
@@ -66,7 +70,12 @@ export default defineComponent({
   <div
     v-if="!this.removed"
     @click.prevent="done()"
-    class="btn btn-outline rounded-pill shadow"
+    :id="'#habit-' + this.habit.id"
+    :class="
+      this.habit.completed_today
+        ? 'btn btn-outline rounded-pill shadow disabled'
+        : 'btn btn-outline rounded-pill shadow'
+    "
   >
     <h3 class="d-inline">{{ habit.name }}</h3>
   </div>
