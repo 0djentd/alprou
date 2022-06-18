@@ -1,5 +1,6 @@
 <script lang="ts">
 import AppFooter from "./components/AppFooter.vue";
+import { useProfileDataStore } from './stores/profile_data';
 export default {
   data() {
     return {
@@ -11,9 +12,13 @@ export default {
         { url: "/logout/", name: "Logout" },
         { url: "/about/", name: "About" },
       ],
+      profile_data: useProfileDataStore(),
     };
   },
   components: { AppFooter },
+  mounted() {
+    this.profile_data.fetchData();
+  },
 };
 </script>
 

@@ -5,7 +5,7 @@ import { api_url } from "@/config";
 export const useProfileDataStore = defineStore("profile_data", {
   state: () => {
     return {
-      loggedIn: false, //type: bool
+      user: null,
       profile: null,
       token: null, //type: string | undefined
     };
@@ -38,15 +38,24 @@ export const useProfileDataStore = defineStore("profile_data", {
           console.error(error);
         });
     },
-    fetchData() {
+    async fetchData() {
+      const authorization = "Token " + this.get_token;
       console.log("Trying to fetch profile data");
-      if (!this.loggedIn) {
-        window.location.href = "/login/";
-      };
-      const authorization = "Token " + this.token;
-      axios({
-        // FIXME
-        url: api_url + "profiles/2/",
+      let profile_id = null;
+      await axios({
+        url: api_url + "profiles/get_user_profile_id/",
+        method: "GET",
+        headers: {
+          Authorization: authorization,
+        },
+      })
+        .then((response) => {
+          profile_id = response.data.pk;
+          console.log(profile_id);
+        })
+        .catch((error) => console.error(error));
+      await axios({
+        url: api_url + "profiles/" + profile_id + "/",
         method: "GET",
         headers: {
           Authorization: authorization,
