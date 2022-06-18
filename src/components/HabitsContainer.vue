@@ -31,7 +31,13 @@ export default {
 </script>
 
 <template>
-  <div v-if="loaded" class="d-flex flex-wrap">
-    <HabitComponent v-for="habit in habits" :key="habit.id" :habit="habit" />
+  <div class="container">
+    <div v-if="loaded" class="d-flex flex-wrap">
+      <HabitComponent
+        v-for="habit in habits"
+        :key="habit.id"
+        :url="habit.url"
+      />
+    </div>
   </div>
 </template>

@@ -3,10 +3,11 @@ import { defineComponent } from "@vue/runtime-core";
 import axios from "axios";
 export default defineComponent({
   props: {
-    habit: null,
+    url: String,
   },
   data() {
     return {
+      habit: {},
       removed: false,
     };
   },
@@ -41,7 +42,23 @@ export default defineComponent({
         this.removed = true;
       });
     },
+    async fetchData() {
+      const authorization = "Token " + localStorage.getItem("token");
+      await axios({
+        url: this.url,
+        method: "GET",
+        headers: {
+          Authorization: authorization,
+        },
+      }).then((res) => {
+        console.log(res);
+        this.habit = res.data;
+      });
+    },
   },
+  mounted() {
+    this.fetchData();
+  }
 });
 </script>
 
@@ -49,11 +66,9 @@ export default defineComponent({
   <div
     v-if="!this.removed"
     @click.prevent="done()"
-    class="habit-component btn card rounded shadow"
+    class="btn btn-outline rounded-pill shadow"
   >
-    <h3>{{ habit.name }}</h3>
-    <p>{{ habit.description }}</p>
-    <button class="btn" @click="remove">x</button>
+    <h3 class="d-inline">{{ habit.name }}</h3>
   </div>
 </template>
 
