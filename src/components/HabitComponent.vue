@@ -73,16 +73,13 @@ export default defineComponent({
     :id="'#habit-' + this.habit.id"
     :class="
       this.habit.completed_today
-        ? 'btn btn-outline rounded-pill shadow disabled'
-        : 'btn btn-outline rounded-pill shadow'
+        ? 'btn m-2 rounded-pill shadow disabled'
+        : 'btn btn-outline-dark m-2 rounded-pill shadow'
     "
   >
-    <h3 class="d-inline">{{ habit.name }}</h3>
+    <h3 class="d-inline">
+      {{ habit.name }}
+      <!--       <span :if="this.habit" class="badge bg-secondary">3</span> -->
+    </h3>
   </div>
 </template>
-
-<style scoped>
-.habit-component {
-  padding: 5px;
-}
-</style>
