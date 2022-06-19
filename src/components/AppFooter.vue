@@ -10,6 +10,7 @@ export default {
         { url: "/profile/", name: "Profile" },
         { url: "/login/", name: "Login" },
         { url: "/logout/", name: "Logout" },
+        { url: "/welcome/", name: "New user" },
         { url: "/about/", name: "About" },
       ],
       api_links: [

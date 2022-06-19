@@ -4,6 +4,7 @@ import AboutView from "@/views/AboutView.vue";
 import ProfileView from "@/views/ProfileView.vue";
 import LoginView from "@/views/LoginView.vue";
 import LogoutView from "@/views/LogoutView.vue";
+import WelcomeView from "@/views/WelcomeView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
       path: "/about/",
       name: "about",
       component: AboutView,
+    },
+    {
+      path: "/welcome/",
+      name: "welcome",
+      component: WelcomeView,
     },
   ],
 });
