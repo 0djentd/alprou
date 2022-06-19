@@ -15,7 +15,7 @@
     "jquery": "^3.6.0",
     "pinia": "^2.0.13",
     "sass": "^1.52.3",
-    "vue": "^3.2.33",
+    "vue": "^3.2.37",
     "vue-router": "^4.0.14"
   },
   "devDependencies": {
