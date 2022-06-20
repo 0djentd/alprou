@@ -1,6 +1,3 @@
-<script>
-export default {};
-</script>
 <template>
-  <main></main>
+  <div></div>
 </template>

@@ -1,24 +1,23 @@
-<script lang="ts">
+<script>
 import AppFooter from "./components/AppFooter.vue";
-import { useProfileDataStore } from "./stores/profile_data";
 export default {
   data() {
-    return {
-      profile_data: useProfileDataStore(),
-    };
+    return {};
   },
   components: { AppFooter },
   mounted() {
-    this.profile_data.fetchData();
+    this.$store.commit("fetchData");
   },
 };
 </script>
 
 <template>
-  <RouterView />
-  <AppFooter />
+  <div id="app">
+    <router-view />
+    <AppFooter />
+  </div>
 </template>
 
-<style>
+<style lang="scss">
 @import "@/assets/style.scss";
 </style>

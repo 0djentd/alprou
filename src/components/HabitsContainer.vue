@@ -1,8 +1,9 @@
 <script>
 import axios from "axios";
-import { api_url } from "@/config";
+import { api_url, get_authorization_or_redirect } from "@/config";
 import HabitComponent from "./HabitComponent.vue";
 export default {
+  name: "HabitsContainer",
   components: { HabitComponent },
   data() {
     return {
@@ -11,12 +12,11 @@ export default {
     };
   },
   mounted() {
-    const authorization = "Token " + localStorage.getItem("token");
     axios({
       url: api_url + "habits/",
       method: "GET",
       headers: {
-        Authorization: authorization,
+        Authorization: get_authorization_or_redirect(),
       },
     })
       .then((res) => {

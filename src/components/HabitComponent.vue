@@ -1,7 +1,8 @@
-<script lang="ts">
-import { defineComponent } from "@vue/runtime-core";
+<script>
 import axios from "axios";
-export default defineComponent({
+import { get_authorization_or_redirect } from "@/config";
+export default {
+  name: "HabitComponent",
   props: {
     url: String,
   },
@@ -16,13 +17,12 @@ export default defineComponent({
       if (this.habit.completed_today == true) {
         return;
       }
-      const authorization = "Token " + localStorage.getItem("token");
       await axios({
         url: this.habit.url + "done/",
         method: "PATCH",
         data: {},
         headers: {
-          Authorization: authorization,
+          Authorization: get_authorization_or_redirect(),
         },
       })
         .then((res) => {
@@ -34,12 +34,11 @@ export default defineComponent({
         });
     },
     async remove() {
-      const authorization = "Token " + localStorage.getItem("token");
       await axios({
         url: this.habit.url,
         method: "DELETE",
         headers: {
-          Authorization: authorization,
+          Authorization: get_authorization_or_redirect(),
         },
       }).then((res) => {
         console.log(res);
@@ -47,12 +46,11 @@ export default defineComponent({
       });
     },
     async fetchData() {
-      const authorization = "Token " + localStorage.getItem("token");
       await axios({
         url: this.url,
         method: "GET",
         headers: {
-          Authorization: authorization,
+          Authorization: get_authorization_or_redirect(),
         },
       }).then((res) => {
         console.log(res);
@@ -63,7 +61,7 @@ export default defineComponent({
   mounted() {
     this.fetchData();
   },
-});
+};
 </script>
 
 <template>

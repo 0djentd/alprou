@@ -1,44 +1,39 @@
-<script lang="ts">
-import { defineComponent } from "vue";
-import { useProfileDataStore } from "../stores/profile_data";
-
-export default defineComponent({
+<script>
+export default {
   data() {
     return {
       username: "",
       password: "",
       remember: false,
-      profile_data: useProfileDataStore(),
     };
   },
   methods: {
     login() {
-      this.profile_data.login(this.username, this.password);
+      this.$store.commit("login", {
+        username: this.username,
+        password: this.password,
+      });
       this.$router.push("/");
     },
   },
-});
+};
 </script>
 
 <template>
-  <main class="w-50 m-auto">
+  <div class="w-50 m-auto">
     <div class="login-ui m-4">
       <form class="card">
         <h1 class="card-header">Login</h1>
         <div class="card-body text-center">
           <div>
-            <input
-              id="username"
-              placeholder="Username"
-              v-model="this.username"
-            />
+            <input id="username" placeholder="Username" v-model="username" />
           </div>
           <div>
             <input
               type="password"
               id="password"
               placeholder="Password"
-              v-model="this.password"
+              v-model="password"
             />
           </div>
           <!--           <input
@@ -60,5 +55,5 @@ export default defineComponent({
         </button>
       </form>
     </div>
-  </main>
+  </div>
 </template>
