@@ -1,5 +1,5 @@
 <script>
-import ProfileComponent from "@/components/ProfileComponent.vue";
+import ProfileComponent from "../components/ProfileComponent.vue";
 export default {
   data() {
     return {
@@ -17,18 +17,5 @@ export default {
 </script>
 
 <template>
-  <main>
-    <ProfileComponent :url="profile_url" />
-  </main>
+  <ProfileComponent v-if="profile_url != null" :url="profile_url" />
 </template>
-
-<style lang="scss" scoped>
-form {
-  padding: 4px;
-  div {
-    label {
-      margin-right: 10px;
-    }
-  }
-}
-</style>

@@ -1,16 +1,22 @@
 <script>
 import { get_authorization_or_redirect } from "@/config";
+import HabitComponent from "@/components/HabitComponent.vue";
 import axios from "axios";
 export default {
   props: {
     url: String,
   },
   data() {
-    return { profile: {}, editing: false };
+    return { profile: null, user: null, editing: false, loading: false };
+  },
+  components: {
+    HabitComponent,
   },
   methods: {
-    fetchData() {
-      axios({
+    async fetchData() {
+      console.log("Started fetch");
+      this.loading = true;
+      await axios({
         url: this.url,
         method: "GET",
         headers: {
@@ -18,35 +24,57 @@ export default {
         },
       })
         .then((res) => {
+          console.log(res);
           this.profile = res.data;
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.error(err));
+      await axios({
+        url: this.profile.user,
+        method: "GET",
+        headers: {
+          Authorization: get_authorization_or_redirect(),
+        },
+      })
+        .then((res) => {
+          console.log(res);
+          this.user = res.data;
+        })
+        .catch((err) => console.error(err));
+      this.loading = false;
+      console.log("Finished fetch");
     },
   },
   mounted() {
-    console.log(1);
     this.fetchData();
-    console.log(3);
   },
 };
 </script>
 
 <template>
-  <v-card>
+  <v-card v-if="profile">
     <v-card-title>User profile</v-card-title>
-    <v-card-subtitle>{{ profile.user.username }}</v-card-subtitle>
-    <div v-if="!editing">
-      <v-card-text> </v-card-text>
-      <v-card-actions>
-        <v-btn v-if="$store.profile.id == profile.id">Edit</v-btn>
-      </v-card-actions>
-    </div>
-    <div v-else>
+    <v-card-subtitle
+      >Public username: {{ profile.public_username }}</v-card-subtitle
+    >
+    <div v-if="editing">
       <v-form>
         <v-card-actions>
-          <v-btn @click="editig = false">Edit</v-btn>
+          <v-btn @click="editing = false">Edit</v-btn>
         </v-card-actions>
       </v-form>
+    </div>
+    <div v-else>
+      <v-card-text>
+        <h3>Habits:</h3>
+        <HabitComponent
+          v-for="habit in user.habits"
+          :key="habit"
+          :url="habit"
+        />
+      </v-card-text>
+      <v-card-actions>
+        <v-btn @click="editing = true">Edit</v-btn>
+      </v-card-actions>
     </div>
   </v-card>
 </template>
