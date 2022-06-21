@@ -69,31 +69,53 @@ export default {
   <v-card
     elevation="8"
     shaped
-    :loading="this.habit == null"
-    v-if="!this.removed"
+    :loading="habit == null"
+    v-if="!removed"
     class="m-4 p-2"
   >
-    <v-card-title>{{ habit.name }}</v-card-title>
-    <v-card-subtitle>{{ habit.user.username }}</v-card-subtitle>
-    <v-card-text>{{ habit.text }}</v-card-text>
-    <v-card-actions>
-      <v-btn
-        outlined
-        rounded
-        @click.prevent="done()"
-        :disabled="this.habit.completed_today"
-        >Done</v-btn
-      >
-      <v-btn
-        outlined
-        rounded
-        @click="
-          () => {
-            this.expanded = !this.expanded;
-          }
-        "
-        >Edit</v-btn
-      >
-    </v-card-actions>
+    <div v-if="!expanded">
+      <v-card-title>{{ habit.name }}</v-card-title>
+      <v-card-subtitle>{{ habit.user.username }}</v-card-subtitle>
+      <v-card-text>{{ habit.description }}</v-card-text>
+      <v-card-actions>
+        <v-btn
+          outlined
+          rounded
+          @click.prevent="done()"
+          :disabled="habit.completed_today"
+          >Done</v-btn
+        >
+        <v-btn outlined rounded @click="expanded = true">More</v-btn>
+      </v-card-actions>
+    </div>
+    <div v-else>
+      <v-form>
+        <v-text-field
+          v-model="habit.name"
+          :counter="200"
+          label="Name"
+          required
+        ></v-text-field>
+        <v-text-field
+          v-model="habit.description"
+          :counter="2000"
+          label="description"
+          outlined
+        ></v-text-field>
+        <v-checkbox v-model="habit.active" label="Active" />
+        <v-checkbox v-model="habit.negative" label="Negative" />
+        <v-checkbox v-model="habit.public" label="Public" />
+        <v-btn>Save</v-btn>
+        <v-btn @click="expanded = false">Back</v-btn>
+      </v-form>
+    </div>
   </v-card>
 </template>
+
+<style scoped lang="scss">
+.v-card__actions {
+  .v-btn {
+    margin: 4px;
+  }
+}
+</style>
