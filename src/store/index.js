@@ -34,7 +34,6 @@ export default new Vuex.Store({
   },
   mutations: {
     async fetchData(state) {
-      console.log("Trying to fetch profile data");
       const profile_id = await axios({
         url: api_url + "profiles/get_user_profile_id/",
         method: "GET",
@@ -67,7 +66,6 @@ export default new Vuex.Store({
         .catch((error) => {
           console.error(error);
         });
-      console.log(user);
       state.user = await user;
     },
     async login(state, data) {
