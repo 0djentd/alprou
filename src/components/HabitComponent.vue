@@ -9,6 +9,7 @@ export default {
   data() {
     return {
       habit: null,
+      expanded: false,
       removed: false,
     };
   },
@@ -65,26 +66,34 @@ export default {
 </script>
 
 <template>
-  <div v-if="this.habit != null">
-    <div
-      v-if="!this.removed"
-      @click.prevent="done()"
-      :id="'#habit-' + this.habit.id"
-      :class="
-        this.habit.completed_today
-          ? 'btn m-2 rounded-pill shadow disabled'
-          : 'btn btn-outline-dark m-2 rounded-pill shadow'
-      "
-    >
-      <h3 class="d-inline">
-        {{ habit.name }}
-        <!--       <span :if="this.habit" class="badge bg-secondary">3</span> -->
-      </h3>
-    </div>
-  </div>
-  <div v-else>
-    <div class="btn m-2 rounded-pill shadow disabled">
-      <div class="spinner-border mx-4"></div>
-    </div>
-  </div>
+  <v-card
+    elevation="8"
+    shaped
+    :loading="this.habit == null"
+    v-if="!this.removed"
+    class="m-4 p-2"
+  >
+    <v-card-title>{{ habit.name }}</v-card-title>
+    <v-card-subtitle>{{ habit.user.username }}</v-card-subtitle>
+    <v-card-text>{{ habit.text }}</v-card-text>
+    <v-card-actions>
+      <v-btn
+        outlined
+        rounded
+        @click.prevent="done()"
+        :disabled="this.habit.completed_today"
+        >Done</v-btn
+      >
+      <v-btn
+        outlined
+        rounded
+        @click="
+          () => {
+            this.expanded = !this.expanded;
+          }
+        "
+        >Edit</v-btn
+      >
+    </v-card-actions>
+  </v-card>
 </template>
