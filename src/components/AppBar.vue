@@ -16,18 +16,17 @@ export default {
 </script>
 
 <template>
-  <v-app-bar app>
+  <v-app-bar app elevate-on-scroll>
     <v-app-bar-title class="ml-2"><h1>Alprou</h1></v-app-bar-title>
-    <div class="v-app-bar-links">
-      <router-link
-        v-for="link in router_links"
-        :key="link.id"
-        :to="link.url"
-        class="px-2 text-muted"
-      >
-        {{ link.name }}
-      </router-link>
-    </div>
+    <v-spacer></v-spacer>
+    <router-link
+      v-for="link in router_links"
+      :key="link.id"
+      :to="link.url"
+      class="px-2 text-muted"
+    >
+      {{ link.name }}
+    </router-link>
   </v-app-bar>
 </template>
 

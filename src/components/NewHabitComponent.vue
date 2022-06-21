@@ -55,8 +55,8 @@ export default {
 </script>
 
 <template>
-  <v-sheet>
-    <v-card v-if="editing" elevation="8" shaped class="m-4 p-2">
+  <v-sheet class="habit-component">
+    <v-card v-if="editing" elevation="4" rounded class="m-4 p-2">
       <v-alert v-if="errors">{{ errors }}</v-alert>
       <v-text-field
         v-model="habit.name"
@@ -80,8 +80,8 @@ export default {
       <v-checkbox v-model="habit.negative" label="Negative" />
       <v-checkbox v-model="habit.public" label="Public" />
       <v-card-actions>
-        <v-btn @click="put()">Create</v-btn>
-        <v-btn @click="reset()">Back</v-btn>
+        <v-btn rounded outlined @click="put()">Create</v-btn>
+        <v-btn rounded outlined @click="reset()">Back</v-btn>
       </v-card-actions>
     </v-card>
     <v-btn v-else @click="editing = true">New</v-btn>

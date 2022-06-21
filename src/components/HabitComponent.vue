@@ -89,7 +89,7 @@ export default {
 </script>
 
 <template>
-  <div v-if="!removed">
+  <div class="habit-component" v-if="!removed">
     <v-card
       elevation="4"
       rounded
@@ -130,9 +130,9 @@ export default {
             <v-checkbox v-model="habit.active" label="Active" />
             <v-checkbox v-model="habit.negative" label="Negative" />
             <v-checkbox v-model="habit.public" label="Public" />
-            <v-btn @click="patch()">Save</v-btn>
-            <v-btn @click="expanded = false">Back</v-btn>
-            <v-btn @click="remove()">Remove</v-btn>
+            <v-btn rounded outlined @click="patch()">Save</v-btn>
+            <v-btn rounded outlined @click="remove()">Remove</v-btn>
+            <v-btn rounded outlined @click="expanded = false">Back</v-btn>
           </v-form>
         </div>
       </div>
