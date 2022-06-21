@@ -2,9 +2,10 @@
 import axios from "axios";
 import { api_url, get_authorization_or_redirect } from "@/config";
 import HabitComponent from "./HabitComponent.vue";
+import NewHabitComponent from "./NewHabitComponent.vue";
 export default {
   name: "HabitsContainer",
-  components: { HabitComponent },
+  components: { HabitComponent, NewHabitComponent },
   data() {
     return {
       habits: [],
@@ -40,6 +41,7 @@ export default {
         :url="habit.url"
         :compact="compact"
       />
+      <NewHabitComponent />
     </div>
     <div v-else>
       <div class="spinner-border"></div>

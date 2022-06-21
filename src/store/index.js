@@ -35,31 +35,40 @@ export default new Vuex.Store({
   mutations: {
     async fetchData(state) {
       console.log("Trying to fetch profile data");
-      let profile_id = null;
-      await axios({
+      const profile_id = await axios({
         url: api_url + "profiles/get_user_profile_id/",
         method: "GET",
         headers: {
           Authorization: get_authorization_or_redirect(),
         },
       })
-        .then((response) => {
-          profile_id = response.data.pk;
-        })
+        .then((response) => response.data.pk)
         .catch((error) => console.error(error));
-      await axios({
+      const profile = await axios({
         url: api_url + "profiles/" + profile_id + "/",
         method: "GET",
         headers: {
           Authorization: get_authorization_or_redirect(),
         },
       })
-        .then((response) => {
-          state.profile = response.data;
-        })
+        .then((response) => response.data)
         .catch((error) => {
           console.error(error);
         });
+      state.profile = profile;
+      const user = await axios({
+        url: profile.user,
+        method: "GET",
+        headers: {
+          Authorization: get_authorization_or_redirect(),
+        },
+      })
+        .then((response) => response.data)
+        .catch((error) => {
+          console.error(error);
+        });
+      console.log(user);
+      state.user = await user;
     },
     async login(state, data) {
       console.log("Trying to login as " + data.username);
