@@ -5,6 +5,7 @@ export default {
   name: "HabitComponent",
   props: {
     url: String,
+    compact: Boolean,
   },
   data() {
     return {
@@ -20,11 +21,11 @@ export default {
     };
   },
   methods: {
-    done() {
+    async done() {
       if (this.habit.completed_today == true) {
         return;
       }
-      axios({
+      await axios({
         url: this.habit.url + "done/",
         method: "PATCH",
         data: {},
@@ -40,8 +41,9 @@ export default {
           console.error(error);
         });
     },
-    remove() {
-      axios({
+    async remove() {
+      this.removed = true;
+      await axios({
         url: this.habit.url,
         method: "DELETE",
         headers: {
@@ -49,12 +51,26 @@ export default {
         },
       }).then((res) => {
         console.log(res);
-        this.removed = true;
       });
     },
-    fetchData() {
+    async patch() {
+      const data = this.habit;
+      await axios({
+        url: this.habit.url,
+        method: "PATCH",
+        headers: {
+          Authorization: get_authorization_or_redirect(),
+        },
+        data: data,
+      }).then((res) => {
+        console.log(res);
+      });
+      this.expanded = false;
+      await this.fetchData();
+    },
+    async fetchData() {
       this.loading = true;
-      axios({
+      await axios({
         url: this.url,
         method: "GET",
         headers: {
@@ -74,50 +90,56 @@ export default {
 </script>
 
 <template>
-  <v-card
-    elevation="8"
-    shaped
-    :loading="loading"
-    v-if="!removed"
-    class="m-4 p-2"
-  >
-    <div v-if="!loading">
-      <div v-if="!expanded">
-        <v-card-title>{{ habit.name }}</v-card-title>
-        <v-card-subtitle>{{ habit.user.username }}</v-card-subtitle>
-        <v-card-text>{{ habit.description }}</v-card-text>
-        <v-card-actions>
-          <v-btn
-            outlined
-            rounded
-            @click.prevent="done()"
-            :disabled="habit.completed_today"
-            >Done</v-btn
-          >
-          <v-btn outlined rounded @click="expanded = true">More</v-btn>
-        </v-card-actions>
+  <div v-if="!removed">
+    <v-card
+      elevation="8"
+      shaped
+      :loading="loading"
+      v-if="!compact"
+      class="m-4 p-2"
+    >
+      <div v-if="!loading">
+        <div v-if="!expanded">
+          <v-card-title>{{ habit.name }}</v-card-title>
+          <v-card-subtitle>{{ habit.user.username }}</v-card-subtitle>
+          <v-card-text>{{ habit.description }}</v-card-text>
+          <v-card-actions>
+            <v-btn
+              outlined
+              rounded
+              @click.prevent="done()"
+              :disabled="habit.completed_today"
+              >Done</v-btn
+            >
+            <v-btn outlined rounded @click="expanded = true">More</v-btn>
+          </v-card-actions>
+        </div>
+        <div v-else>
+          <v-form>
+            <v-text-field
+              v-model="habit.name"
+              :counter="200"
+              label="Name"
+              required
+            ></v-text-field>
+            <v-text-field
+              v-model="habit.description"
+              :counter="2000"
+              label="description"
+              outlined
+            ></v-text-field>
+            <v-checkbox v-model="habit.active" label="Active" />
+            <v-checkbox v-model="habit.negative" label="Negative" />
+            <v-checkbox v-model="habit.public" label="Public" />
+            <v-btn @click="patch()">Save</v-btn>
+            <v-btn @click="expanded = false">Back</v-btn>
+            <v-btn @click="remove()">Remove</v-btn>
+          </v-form>
+        </div>
       </div>
-      <div v-else>
-        <v-form>
-          <v-text-field
-            v-model="habit.name"
-            :counter="200"
-            label="Name"
-            required
-          ></v-text-field>
-          <v-text-field
-            v-model="habit.description"
-            :counter="2000"
-            label="description"
-            outlined
-          ></v-text-field>
-          <v-checkbox v-model="habit.active" label="Active" />
-          <v-checkbox v-model="habit.negative" label="Negative" />
-          <v-checkbox v-model="habit.public" label="Public" />
-          <v-btn>Save</v-btn>
-          <v-btn @click="expanded = false">Back</v-btn>
-        </v-form>
-      </div>
-    </div>
-  </v-card>
+    </v-card>
+    <v-btn v-else @click="done()" :disabled="habit.completed_today" rounded>{{
+      habit.name
+    }}</v-btn>
+  </div>
 </template>

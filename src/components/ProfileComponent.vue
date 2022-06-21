@@ -53,9 +53,7 @@ export default {
 <template>
   <v-card v-if="profile">
     <v-card-title>User profile</v-card-title>
-    <v-card-subtitle
-      >Public username: {{ profile.public_username }}</v-card-subtitle
-    >
+    <v-card-subtitle>Username: {{ profile.username }}</v-card-subtitle>
     <div v-if="editing">
       <v-form>
         <v-card-actions>
@@ -71,6 +69,16 @@ export default {
           :key="habit"
           :url="habit"
         />
+        <p>Username: {{ user.username }}</p>
+        <p v-if="profile.public_username">
+          Public username: {{ profile.public_username }}
+        </p>
+        <p v-if="profile.profile_image">
+          Profile image: {{ profile.profile_image }}
+        </p>
+        <p v-if="profile.background_image">
+          Background image: {{ profile.background_image }}
+        </p>
       </v-card-text>
       <v-card-actions>
         <v-btn @click="editing = true">Edit</v-btn>

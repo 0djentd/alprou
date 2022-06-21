@@ -9,6 +9,7 @@ export default {
     return {
       habits: [],
       loaded: false,
+      compact: false,
     };
   },
   mounted() {
@@ -37,6 +38,7 @@ export default {
         v-for="habit in habits"
         :key="habit.id"
         :url="habit.url"
+        :compact="compact"
       />
     </div>
     <div v-else>
