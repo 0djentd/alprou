@@ -27,20 +27,22 @@ export default {
 <template>
   <div class="container">
     <footer class="py-3 my-4">
-      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <ul class="nav justify-content-center">
         <li class="nav-item" :key="link.url" v-for="link in router_links">
           <router-link :to="link.url" class="nav-link px-2 text-muted">
             {{ link.name }}
           </router-link>
         </li>
       </ul>
-      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <v-divider />
+      <ul class="nav justify-content-center">
         <li class="nav-item" :key="link.url" v-for="link in api_links">
           <a :href="link.url" class="nav-link px-2 text-muted">
             {{ link.name }}
           </a>
         </li>
       </ul>
+      <v-divider />
       <p class="text-center text-muted">&copy; {{ year }} 0djentd</p>
     </footer>
   </div>
