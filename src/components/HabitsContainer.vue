@@ -1,10 +1,14 @@
 <script>
 import axios from "axios";
-import { api_url, get_authorization_or_redirect } from "@/config";
+import { get_authorization_or_redirect } from "@/config";
 import HabitComponent from "./HabitComponent.vue";
+import NewHabitComponent from "../components/NewHabitComponent.vue";
 export default {
   name: "HabitsContainer",
-  components: { HabitComponent },
+  components: { HabitComponent, NewHabitComponent },
+  props: {
+    url: String,
+  },
   data() {
     return {
       habits: [],
@@ -12,9 +16,10 @@ export default {
       compact: false,
     };
   },
-  mounted() {
+  async mounted() {
+    console.log(this.url);
     axios({
-      url: api_url + "habits/",
+      url: this.url,
       method: "GET",
       headers: {
         Authorization: get_authorization_or_redirect(),
@@ -40,6 +45,7 @@ export default {
         :url="habit.url"
         :compact="compact"
       />
+      <NewHabitComponent />
     </div>
     <div v-else>
       <div class="spinner-border"></div>

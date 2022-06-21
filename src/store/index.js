@@ -31,6 +31,32 @@ export default new Vuex.Store({
       }).then((res) => res.data);
       return profile;
     },
+    async user() {
+      // TODO
+      const profile_id = await axios({
+        url: api_url + "profiles/get_user_profile_id/",
+        method: "GET",
+        headers: {
+          Authorization: get_authorization_or_redirect(),
+        },
+      }).then((res) => res.data.pk);
+      const profile = await axios({
+        url: api_url + "profiles/" + profile_id + "/",
+        method: "GET",
+        headers: {
+          Authorization: get_authorization_or_redirect(),
+        },
+      }).then((res) => res.data);
+      const user_url = profile.user;
+      const user = await axios({
+        url: user_url,
+        method: "GET",
+        headers: {
+          Authorization: get_authorization_or_redirect(),
+        },
+      }).then((res) => res.data);
+      return user;
+    },
   },
   mutations: {
     async fetchData(state) {
