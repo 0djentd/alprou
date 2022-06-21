@@ -14,7 +14,6 @@ export default {
   },
   methods: {
     async fetchData() {
-      console.log("Started fetch");
       this.loading = true;
       await axios({
         url: this.url,
@@ -24,7 +23,6 @@ export default {
         },
       })
         .then((res) => {
-          console.log(res);
           this.profile = res.data;
         })
         .catch((err) => console.error(err));
@@ -36,12 +34,10 @@ export default {
         },
       })
         .then((res) => {
-          console.log(res);
           this.user = res.data;
         })
         .catch((err) => console.error(err));
       this.loading = false;
-      console.log("Finished fetch");
     },
   },
   mounted() {
@@ -51,7 +47,7 @@ export default {
 </script>
 
 <template>
-  <v-card v-if="profile">
+  <v-card v-if="profile && user">
     <v-card-title>User profile</v-card-title>
     <v-card-subtitle>Username: {{ profile.username }}</v-card-subtitle>
     <div v-if="editing">

@@ -77,7 +77,6 @@ export default {
           Authorization: get_authorization_or_redirect(),
         },
       }).then((res) => {
-        console.log(res);
         this.habit = res.data;
       });
       this.loading = false;
