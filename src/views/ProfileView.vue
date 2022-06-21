@@ -1,32 +1,24 @@
 <script>
+import ProfileComponent from "@/components/ProfileComponent.vue";
 export default {
   data() {
-    return {};
+    return {
+      profile_url: null,
+    };
+  },
+  components: {
+    ProfileComponent,
+  },
+  updated() {
+    this.$store.commit("fetchData");
+    this.profile_url = this.$store.state.profile.url;
   },
 };
 </script>
 
 <template>
   <main>
-    <form action="" class="card w-50">
-      <div>
-        <label for="profile_public_username">public username</label>
-        <input
-          v-model="this.$store.state.profile.public_username"
-          id="profile_public_username"
-        />
-      </div>
-      <div>
-        <label for="profile_public">public profile</label>
-        <input
-          v-model="this.$store.state.profile.public"
-          type="checkbox"
-          id="profile_public"
-        />
-      </div>
-      <input v-model="this.$store.state.profile.profile_image" type="image" />
-      <button @click.prevent>Save</button>
-    </form>
+    <ProfileComponent :url="profile_url" />
   </main>
 </template>
 
