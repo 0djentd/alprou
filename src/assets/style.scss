@@ -1,6 +1,15 @@
 * {
-    font-family: 'Inconsolata', monospace;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  font-family: "Inconsolata", monospace;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.v-card {
+  margin: 4px;
+  padding: 2px;
+}
+.v-card__actions {
+  .v-btn {
+    margin: 4px;
+  }
 }
