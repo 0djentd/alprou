@@ -15,7 +15,7 @@ export default {
 <template>
   <v-app id="app">
     <AppBar />
-    <v-main>
+    <v-main app>
       <router-view />
     </v-main>
     <AppFooter />

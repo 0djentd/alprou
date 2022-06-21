@@ -18,7 +18,7 @@ export default {
 </script>
 
 <template>
-  <v-container>
+  <v-container fluid>
     <v-sheet>
       <HabitsContainer v-if="url" :url="url" />
     </v-sheet>

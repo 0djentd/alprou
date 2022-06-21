@@ -16,7 +16,7 @@ export default {
 </script>
 
 <template>
-  <v-app-bar>
+  <v-app-bar app>
     <v-app-bar-title class="ml-2"><h1>Alprou</h1></v-app-bar-title>
     <div class="v-app-bar-links">
       <router-link

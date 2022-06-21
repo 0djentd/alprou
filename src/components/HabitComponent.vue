@@ -91,8 +91,8 @@ export default {
 <template>
   <div v-if="!removed">
     <v-card
-      elevation="8"
-      shaped
+      elevation="4"
+      rounded
       :loading="loading"
       v-if="!compact"
       class="m-4 p-2"

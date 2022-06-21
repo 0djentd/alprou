@@ -17,5 +17,7 @@ export default {
 </script>
 
 <template>
-  <ProfileComponent v-if="profile_url != null" :url="profile_url" />
+  <v-container>
+    <ProfileComponent v-if="profile_url != null" :url="profile_url" />
+  </v-container>
 </template>
