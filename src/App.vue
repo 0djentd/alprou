@@ -1,10 +1,11 @@
 <script>
 import AppFooter from "./components/AppFooter.vue";
+import AppBar from "./components/AppBar.vue";
 export default {
   data() {
     return {};
   },
-  components: { AppFooter },
+  components: { AppFooter, AppBar },
   beforeCreate() {
     this.$store.commit("fetchData");
   },
@@ -12,10 +13,13 @@ export default {
 </script>
 
 <template>
-  <div id="app">
-    <router-view />
+  <v-app id="app">
+    <AppBar />
+    <v-main>
+      <router-view />
+    </v-main>
     <AppFooter />
-  </div>
+  </v-app>
 </template>
 
 <style lang="scss">

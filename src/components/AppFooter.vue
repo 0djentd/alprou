@@ -25,8 +25,8 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <footer class="py-3 my-4">
+  <v-footer class="py-2 my-2">
+    <footer class="mx-auto">
       <ul class="nav justify-content-center">
         <li class="nav-item" :key="link.url" v-for="link in router_links">
           <router-link :to="link.url" class="nav-link px-2 text-muted">
@@ -45,5 +45,5 @@ export default {
       <v-divider />
       <p class="text-center text-muted">&copy; {{ year }} 0djentd</p>
     </footer>
-  </div>
+  </v-footer>
 </template>
