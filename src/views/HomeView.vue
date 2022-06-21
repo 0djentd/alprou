@@ -11,15 +11,9 @@ export default {
 
 <template>
   <v-container>
-    <v-row>
-      <v-col cols="2">
-        <v-sheet><NewHabitComponent /></v-sheet>
-      </v-col>
-      <v-col>
-        <v-sheet min-height="400px">
-          <HabitsContainer />
-        </v-sheet>
-      </v-col>
-    </v-row>
+    <v-sheet>
+      <HabitsContainer />
+      <NewHabitComponent />
+    </v-sheet>
   </v-container>
 </template>
