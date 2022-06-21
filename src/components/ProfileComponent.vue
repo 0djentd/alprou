@@ -9,24 +9,24 @@ export default {
     return { profile: {}, editing: false };
   },
   methods: {
-    async fetchData() {
-      await axios({
+    fetchData() {
+      axios({
         url: this.url,
         method: "GET",
         headers: {
           Authorization: get_authorization_or_redirect(),
         },
       })
-        .then((response) => {
-          this.profile = response.data;
+        .then((res) => {
+          this.profile = res.data;
         })
-        .catch((error) => {
-          console.error(error);
-        });
+        .catch((err) => console.log(err));
     },
   },
-  updated() {
+  mounted() {
+    console.log(1);
     this.fetchData();
+    console.log(3);
   },
 };
 </script>

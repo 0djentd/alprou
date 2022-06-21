@@ -9,9 +9,9 @@ export default {
   components: {
     ProfileComponent,
   },
-  updated() {
-    this.$store.commit("fetchData");
-    this.profile_url = this.$store.state.profile.url;
+  async mounted() {
+    const profile = await this.$store.getters.profile;
+    this.profile_url = profile.url;
   },
 };
 </script>

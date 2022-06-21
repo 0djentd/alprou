@@ -5,7 +5,7 @@ export default {
     return {};
   },
   components: { AppFooter },
-  mounted() {
+  beforeCreate() {
     this.$store.commit("fetchData");
   },
 };

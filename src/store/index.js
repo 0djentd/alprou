@@ -14,9 +14,22 @@ export default new Vuex.Store({
     };
   },
   getters: {
-    get_token() {
-      const token = localStorage.getItem("token");
-      return token;
+    async profile() {
+      const profile_id = await axios({
+        url: api_url + "profiles/get_user_profile_id/",
+        method: "GET",
+        headers: {
+          Authorization: get_authorization_or_redirect(),
+        },
+      }).then((res) => res.data.pk);
+      const profile = await axios({
+        url: api_url + "profiles/" + profile_id + "/",
+        method: "GET",
+        headers: {
+          Authorization: get_authorization_or_redirect(),
+        },
+      }).then((res) => res.data);
+      return profile;
     },
   },
   mutations: {
@@ -32,7 +45,6 @@ export default new Vuex.Store({
       })
         .then((response) => {
           profile_id = response.data.pk;
-          console.log(profile_id);
         })
         .catch((error) => console.error(error));
       await axios({
