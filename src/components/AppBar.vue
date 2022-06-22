@@ -7,6 +7,7 @@ export default {
         { url: "/profile/", name: "Profile" },
         { url: "/login/", name: "Login" },
         { url: "/logout/", name: "Logout" },
+        { url: "/settings/", name: "Settings" },
         { url: "/welcome/", name: "New user" },
         { url: "/about/", name: "About" },
       ],

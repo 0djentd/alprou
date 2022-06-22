@@ -11,6 +11,9 @@ export default new Vuex.Store({
       user: null,
       profile: null,
       token: null,
+      theme: {
+        compact: false,
+      },
     };
   },
   getters: {

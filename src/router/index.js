@@ -6,6 +6,7 @@ import ProfileView from "@/views/ProfileView.vue";
 import LoginView from "@/views/LoginView.vue";
 import LogoutView from "@/views/LogoutView.vue";
 import WelcomeView from "@/views/WelcomeView.vue";
+import SettingsView from "@/views/SettingsView.vue";
 
 Vue.use(VueRouter);
 
@@ -29,6 +30,11 @@ const routes = [
     path: "/logout/",
     name: "logout",
     component: LogoutView,
+  },
+  {
+    path: "/settings/",
+    name: "settings",
+    component: SettingsView,
   },
   {
     path: "/about/",
