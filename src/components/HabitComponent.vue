@@ -127,6 +127,12 @@ export default {
               label="description"
               outlined
             ></v-text-field>
+            <v-text-field
+              v-model="habit.tags"
+              :counter="2000"
+              label="tags"
+              outlined
+            ></v-text-field>
             <v-checkbox v-model="habit.active" label="Active" />
             <v-checkbox v-model="habit.negative" label="Negative" />
             <v-checkbox v-model="habit.public" label="Public" />
