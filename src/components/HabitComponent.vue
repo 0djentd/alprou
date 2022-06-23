@@ -131,10 +131,14 @@ export default {
       elevation="2"
       outlined
     >
-      <v-btn @click="done()" :disabled="habit.completed_today" rounded text>{{
-        habit.name
-      }}</v-btn>
-      <v-btn v-if="editing" @click="expanded = true" rounded text>+</v-btn>
+      <div v-if="!editing">
+        <v-btn @click="done()" :disabled="habit.completed_today" rounded text>{{
+          habit.name
+        }}</v-btn>
+      </div>
+      <div v-else>
+        <v-btn @click="expanded = true" rounded text>{{ habit.name }}</v-btn>
+      </div>
     </v-sheet>
     <div v-if="expanded">
       <v-form>

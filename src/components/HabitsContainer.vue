@@ -52,6 +52,7 @@ export default {
     <div v-else>
       <div class="spinner-border"></div>
     </div>
-    <v-checkbox v-model="editing"></v-checkbox>
+    <v-switch label="Compact view" v-model="compact"></v-switch>
+    <v-switch v-if="compact" label="Edit" v-model="editing"></v-switch>
   </v-container>
 </template>
