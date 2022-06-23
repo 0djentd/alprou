@@ -38,6 +38,7 @@ export default {
 
 <template>
   <v-container>
+    <v-card-title v-if="editing">Editing habits</v-card-title>
     <div v-if="loaded" class="d-flex flex-wrap">
       <HabitComponent
         v-for="habit in habits"
@@ -48,8 +49,8 @@ export default {
       />
       <NewHabitComponent />
     </div>
-    <div v-else>
-      <div class="spinner-border"></div>
+    <div v-else class="d-flex flex-wrap">
+      <v-skeleton-loader></v-skeleton-loader>
     </div>
     <v-switch label="Compact view" v-model="compact"></v-switch>
     <v-switch v-if="compact" label="Edit" v-model="editing"></v-switch>

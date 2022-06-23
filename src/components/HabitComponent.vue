@@ -90,6 +90,9 @@ export default {
         this.habit = res.data;
       });
       this.loading = false;
+      if (this.habit.tags == "") {
+        this.habit.tags = "[]";
+      }
     },
   },
   mounted() {
