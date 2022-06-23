@@ -1,9 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import HomeView from "@/views/HomeView.vue";
 import AboutView from "@/views/AboutView.vue";
 import LoginView from "@/views/LoginView.vue";
 import LogoutView from "@/views/LogoutView.vue";
+import RegistrationView from "@/views/RegistrationView.vue";
 import WelcomeView from "@/views/WelcomeView.vue";
 import SettingsView from "@/views/SettingsView.vue";
 
@@ -24,6 +25,11 @@ const routes = [
     path: "/logout/",
     name: "logout",
     component: LogoutView,
+  },
+  {
+    path: "/registration/",
+    name: "registration",
+    component: RegistrationView,
   },
   {
     path: "/settings/",

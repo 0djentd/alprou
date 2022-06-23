@@ -6,6 +6,7 @@ export default {
         { url: "/", name: "Home" },
         { url: "/login/", name: "Login" },
         { url: "/logout/", name: "Logout" },
+        { url: "/registration/", name: "Registration" },
         { url: "/settings/", name: "Settings" },
         { url: "/welcome/", name: "New user" },
         { url: "/about/", name: "About" },

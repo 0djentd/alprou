@@ -1,8 +1,9 @@
 <script>
 import axios from "axios";
-import { get_authorization_or_redirect } from "@/config";
 import HabitComponent from "./HabitComponent.vue";
 import NewHabitComponent from "../components/NewHabitComponent.vue";
+import { get_authorization_or_redirect } from "@/config";
+
 export default {
   name: "HabitsContainer",
   components: { HabitComponent, NewHabitComponent },
