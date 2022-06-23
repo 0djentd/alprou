@@ -144,7 +144,7 @@ export default {
         </div>
       </div>
     </v-card>
-    <v-sheet class="habit-compact" v-else elevation="2" outlined>
+    <v-sheet v-else class="rounded-pill m-1" elevation="2" outlined>
       <v-btn @click="done()" :disabled="habit.completed_today" rounded text>{{
         habit.name
       }}</v-btn>
@@ -152,10 +152,3 @@ export default {
     </v-sheet>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.habit-compact {
-  margin: 4px;
-  border-radius: 20px;
-}
-</style>

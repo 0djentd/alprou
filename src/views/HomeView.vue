@@ -1,6 +1,7 @@
 <script>
 import HabitsContainer from "../components/HabitsContainer.vue";
 import { api_url } from "@/config";
+
 export default {
   components: {
     HabitsContainer,

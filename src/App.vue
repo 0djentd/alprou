@@ -1,6 +1,7 @@
 <script>
 import AppFooter from "./components/AppFooter.vue";
 import AppBar from "./components/AppBar.vue";
+
 export default {
   data() {
     return {};
@@ -22,6 +23,6 @@ export default {
   </v-app>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/style.scss";
 </style>
