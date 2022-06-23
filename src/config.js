@@ -11,3 +11,9 @@ export function get_authorization_or_redirect() {
   // console.log('Authorization: "' + authorization + '"');
   return authorization;
 }
+
+export const default_theme = {
+  compact: true,
+  hide_appbar: false,
+  hide_api_links: false,
+};

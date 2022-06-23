@@ -1,7 +1,11 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
-import { api_url, get_authorization_or_redirect } from "@/config";
+import {
+  api_url,
+  default_theme,
+  get_authorization_or_redirect,
+} from "@/config";
 
 Vue.use(Vuex);
 
@@ -11,11 +15,7 @@ export default new Vuex.Store({
       user: null,
       profile: null,
       token: null,
-      theme: {
-        compact: true,
-        hide_appbar: false,
-        hide_api_links: false,
-      },
+      theme: default_theme,
     };
   },
   getters: {
@@ -116,6 +116,16 @@ export default new Vuex.Store({
         .catch((error) => {
           console.error(error);
         });
+    },
+    load(state) {
+      const theme = JSON.parse(
+        localStorage.getItem("settings-theme", default_theme)
+      );
+      state.theme = theme;
+    },
+    save(state) {
+      const theme = JSON.stringify(state.theme);
+      localStorage.setItem("settings-theme", theme);
     },
   },
 });

@@ -9,6 +9,7 @@ export default {
   components: { AppFooter, AppBar },
   beforeCreate() {
     this.$store.commit("fetchData");
+    this.$store.commit("load");
   },
 };
 </script>

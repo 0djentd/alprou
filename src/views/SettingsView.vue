@@ -1,3 +1,15 @@
+<script>
+export default {
+  methods: {
+    save() {
+      this.$store.commit("save");
+    },
+    load() {
+      this.$store.commit("load");
+    },
+  },
+};
+</script>
 <template>
   <v-container>
     <v-sheet>
@@ -11,6 +23,8 @@
         label="Hide API links"
         v-model="$store.state.theme.hide_api_links"
       />
+      <v-btn @click="load()" rounded outlined>Load</v-btn>
+      <v-btn @click="save()" rounded outlined>Save</v-btn>
     </v-sheet>
   </v-container>
 </template>
