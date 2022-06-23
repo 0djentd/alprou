@@ -18,7 +18,6 @@ export default {
     };
   },
   async mounted() {
-    console.log(this.url);
     axios({
       url: this.url,
       method: "GET",
@@ -31,7 +30,7 @@ export default {
         this.loaded = true;
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   },
 };
