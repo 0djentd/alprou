@@ -8,8 +8,9 @@ export default {
   },
   components: { AppFooter, AppBar },
   beforeCreate() {
-    this.$store.commit("fetchData");
     this.$store.commit("load");
+    this.$store.commit("fetchData");
+    this.$vuetify.theme.dark = this.$store.state.theme.dark;
   },
 };
 </script>

@@ -125,6 +125,12 @@ export default new Vuex.Store({
     },
     save(state) {
       const theme = JSON.stringify(state.theme);
+      console.log(theme);
+      localStorage.setItem("settings-theme", theme);
+    },
+    reset(state) {
+      const theme = JSON.stringify(default_theme);
+      state.theme = theme;
       localStorage.setItem("settings-theme", theme);
     },
   },
