@@ -146,23 +146,25 @@ export default {
           v-model="habit.name"
           :counter="200"
           label="Name"
+          autofocus
           required
         ></v-text-field>
-        <v-text-field
+        <v-textarea
           v-model="habit.description"
           :counter="2000"
-          label="description"
+          label="Description"
           outlined
-        ></v-text-field>
+        ></v-textarea>
         <v-text-field
           v-model="habit.tags"
           :counter="2000"
-          label="tags"
+          label="Tags"
+          dense
           outlined
         ></v-text-field>
         <v-checkbox v-model="habit.active" label="Active" />
         <v-checkbox v-model="habit.negative" label="Negative" />
-        <v-checkbox v-model="habit.public" label="Public" />
+        <v-checkbox v-model="habit.private" label="Private" />
         <v-btn rounded outlined @click="patch()">Save</v-btn>
         <v-btn rounded outlined @click="remove()">Remove</v-btn>
         <v-btn rounded outlined @click="expanded = false">Back</v-btn>
