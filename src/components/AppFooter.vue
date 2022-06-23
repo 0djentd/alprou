@@ -5,7 +5,6 @@ export default {
       year: 2022,
       router_links: [
         { url: "/", name: "Home" },
-        { url: "/profile/", name: "Profile" },
         { url: "/login/", name: "Login" },
         { url: "/logout/", name: "Logout" },
         { url: "/settings/", name: "Settings" },
