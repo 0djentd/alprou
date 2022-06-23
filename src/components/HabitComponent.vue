@@ -99,12 +99,12 @@ export default {
 </script>
 
 <template>
-  <div class="habit-component" v-if="!removed">
+  <div v-if="!removed">
     <v-card
       elevation="4"
       rounded
       :loading="loading"
-      v-if="!compact"
+      v-if="!expanded && !compact"
       class="m-4 p-2"
     >
       <div v-if="!loading">
@@ -123,41 +123,46 @@ export default {
             <v-btn outlined rounded @click="expanded = true">More</v-btn>
           </v-card-actions>
         </div>
-        <div v-else>
-          <v-form>
-            <v-text-field
-              v-model="habit.name"
-              :counter="200"
-              label="Name"
-              required
-            ></v-text-field>
-            <v-text-field
-              v-model="habit.description"
-              :counter="2000"
-              label="description"
-              outlined
-            ></v-text-field>
-            <v-text-field
-              v-model="habit.tags"
-              :counter="2000"
-              label="tags"
-              outlined
-            ></v-text-field>
-            <v-checkbox v-model="habit.active" label="Active" />
-            <v-checkbox v-model="habit.negative" label="Negative" />
-            <v-checkbox v-model="habit.public" label="Public" />
-            <v-btn rounded outlined @click="patch()">Save</v-btn>
-            <v-btn rounded outlined @click="remove()">Remove</v-btn>
-            <v-btn rounded outlined @click="expanded = false">Back</v-btn>
-          </v-form>
-        </div>
       </div>
     </v-card>
-    <v-sheet v-else class="rounded-pill m-1" elevation="2" outlined>
+    <v-sheet
+      v-if="!expanded && compact"
+      class="rounded-pill m-1"
+      elevation="2"
+      outlined
+    >
       <v-btn @click="done()" :disabled="habit.completed_today" rounded text>{{
         habit.name
       }}</v-btn>
       <v-btn v-if="editing" @click="expanded = true" rounded text>+</v-btn>
     </v-sheet>
+    <div v-if="expanded">
+      <v-form>
+        <v-text-field
+          v-model="habit.name"
+          :counter="200"
+          label="Name"
+          required
+        ></v-text-field>
+        <v-text-field
+          v-model="habit.description"
+          :counter="2000"
+          label="description"
+          outlined
+        ></v-text-field>
+        <v-text-field
+          v-model="habit.tags"
+          :counter="2000"
+          label="tags"
+          outlined
+        ></v-text-field>
+        <v-checkbox v-model="habit.active" label="Active" />
+        <v-checkbox v-model="habit.negative" label="Negative" />
+        <v-checkbox v-model="habit.public" label="Public" />
+        <v-btn rounded outlined @click="patch()">Save</v-btn>
+        <v-btn rounded outlined @click="remove()">Remove</v-btn>
+        <v-btn rounded outlined @click="expanded = false">Back</v-btn>
+      </v-form>
+    </div>
   </div>
 </template>
