@@ -5,6 +5,7 @@ export default {
   name: "HabitComponent",
   props: {
     url: String,
+    editing: Boolean,
     compact: Boolean,
   },
   data() {
@@ -143,8 +144,18 @@ export default {
         </div>
       </div>
     </v-card>
-    <v-btn v-else @click="done()" :disabled="habit.completed_today" rounded>{{
-      habit.name
-    }}</v-btn>
+    <v-sheet class="habit-compact" v-else elevation="2" outlined>
+      <v-btn @click="done()" :disabled="habit.completed_today" rounded text>{{
+        habit.name
+      }}</v-btn>
+      <v-btn v-if="editing" rounded text>EDIT</v-btn>
+    </v-sheet>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.habit-compact {
+  margin: 4px;
+  border-radius: 20px;
+}
+</style>

@@ -14,7 +14,7 @@ export default {
 
 <template>
   <v-app id="app">
-    <AppBar />
+    <AppBar v-if="!this.$store.state.theme.hide_appbar" />
     <v-main app>
       <router-view />
     </v-main>

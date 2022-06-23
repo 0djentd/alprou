@@ -35,14 +35,16 @@ export default {
           </router-link>
         </li>
       </ul>
-      <v-divider />
-      <ul class="nav justify-content-center">
-        <li class="nav-item" :key="link.url" v-for="link in api_links">
-          <a :href="link.url" class="nav-link px-2 text-muted">
-            {{ link.name }}
-          </a>
-        </li>
-      </ul>
+      <div v-if="!this.$store.state.theme.hide_api_links">
+        <v-divider />
+        <ul class="nav justify-content-center">
+          <li class="nav-item" :key="link.url" v-for="link in api_links">
+            <a :href="link.url" class="nav-link px-2 text-muted">
+              {{ link.name }}
+            </a>
+          </li>
+        </ul>
+      </div>
       <v-divider />
       <p class="text-center text-muted">&copy; {{ year }} 0djentd</p>
     </footer>

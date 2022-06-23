@@ -13,6 +13,8 @@ export default new Vuex.Store({
       token: null,
       theme: {
         compact: false,
+        hide_appbar: false,
+        hide_api_links: false,
       },
     };
   },

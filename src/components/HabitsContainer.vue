@@ -13,7 +13,8 @@ export default {
     return {
       habits: [],
       loaded: false,
-      compact: false,
+      compact: this.$store.state.theme.compact,
+      editing: false,
     };
   },
   async mounted() {
@@ -37,18 +38,20 @@ export default {
 </script>
 
 <template>
-  <div class="container">
+  <v-container>
     <div v-if="loaded" class="d-flex flex-wrap">
       <HabitComponent
         v-for="habit in habits"
         :key="habit.id"
         :url="habit.url"
         :compact="compact"
+        :editing="editing"
       />
       <NewHabitComponent />
     </div>
     <div v-else>
       <div class="spinner-border"></div>
     </div>
-  </div>
+    <v-checkbox v-model="editing"></v-checkbox>
+  </v-container>
 </template>
