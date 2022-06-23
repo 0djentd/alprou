@@ -7,7 +7,7 @@ export default {
   name: "HabitsContainer",
   components: { HabitComponent, NewHabitComponent },
   props: {
-    url: String,
+    url: { type: String, required: true },
   },
   data() {
     return {

@@ -55,7 +55,7 @@ export default {
 </script>
 
 <template>
-  <v-sheet class="habit-component">
+  <div>
     <v-card v-if="editing" elevation="4" rounded class="m-4 p-2">
       <v-alert v-if="errors">{{ errors }}</v-alert>
       <v-text-field
@@ -84,6 +84,9 @@ export default {
         <v-btn rounded outlined @click="reset()">Back</v-btn>
       </v-card-actions>
     </v-card>
-    <v-btn v-else @click="editing = true">New</v-btn>
-  </v-sheet>
+    <v-sheet v-else class="rounded-pill m-1" elevation="2" outlined>
+      <v-btn @click="editing = true" rounded text>+</v-btn>
+      <v-btn v-if="editing" rounded text>EDIT</v-btn>
+    </v-sheet>
+  </div>
 </template>

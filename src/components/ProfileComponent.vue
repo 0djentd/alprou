@@ -4,7 +4,7 @@ import HabitComponent from "@/components/HabitComponent.vue";
 import axios from "axios";
 export default {
   props: {
-    url: String,
+    url: { type: String, required: true },
   },
   data() {
     return { profile: null, user: null, editing: false, loading: false };

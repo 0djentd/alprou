@@ -4,9 +4,18 @@ import { get_authorization_or_redirect } from "@/config";
 export default {
   name: "HabitComponent",
   props: {
-    url: String,
-    editing: Boolean,
-    compact: Boolean,
+    url: {
+      type: String,
+      required: true,
+    },
+    editing: {
+      type: Boolean,
+      required: false,
+    },
+    compact: {
+      type: Boolean,
+      required: false,
+    },
   },
   data() {
     return {
@@ -148,7 +157,7 @@ export default {
       <v-btn @click="done()" :disabled="habit.completed_today" rounded text>{{
         habit.name
       }}</v-btn>
-      <v-btn v-if="editing" rounded text>EDIT</v-btn>
+      <v-btn v-if="editing" @click="expanded = true" rounded text>+</v-btn>
     </v-sheet>
   </div>
 </template>
