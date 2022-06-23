@@ -8,6 +8,7 @@ export default {
   components: { HabitComponent, NewHabitComponent },
   props: {
     url: { type: String, required: true },
+    label: { type: String, required: false },
   },
   data() {
     return {
@@ -38,7 +39,13 @@ export default {
 
 <template>
   <v-container>
-    <v-card-title v-if="editing">Editing habits</v-card-title>
+    <v-container class="habits-container-controls d-flex">
+      <h4 v-if="editing">Editing habits</h4>
+      <h4 v-else>{{ label }}</h4>
+      <v-spacer> </v-spacer>
+      <v-switch label="Compact view" v-model="compact"></v-switch>
+      <v-switch v-if="compact" label="Edit" v-model="editing"></v-switch>
+    </v-container>
     <div v-if="loaded" class="d-flex flex-wrap">
       <HabitComponent
         v-for="habit in habits"
@@ -52,7 +59,13 @@ export default {
     <div v-else class="d-flex flex-wrap">
       <v-skeleton-loader></v-skeleton-loader>
     </div>
-    <v-switch label="Compact view" v-model="compact"></v-switch>
-    <v-switch v-if="compact" label="Edit" v-model="editing"></v-switch>
   </v-container>
 </template>
+
+<style lang="scss" scoped>
+.habits-container-controls {
+  * {
+    margin: 0 8px;
+  }
+}
+</style>
