@@ -19,9 +19,11 @@ export default {
 
 <template>
   <div>
-    <v-btn @click="drawer = true" @mouseover="drawer = true">
-      <span class="material-symbols-outlined"> menu </span></v-btn
-    >
+    <v-navigation-drawer floating permanent absoulte style="max-width: 50px">
+      <v-btn @click="drawer = true" @mouseover="drawer = true">
+        <span class="material-symbols-outlined"> menu </span></v-btn
+      >
+    </v-navigation-drawer>
     <v-overlay
       @click="drawer = false"
       @mouseover="drawer = false"
