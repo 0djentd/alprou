@@ -1,12 +1,13 @@
 <script>
 import AppFooter from "./components/AppFooter.vue";
 import AppBar from "./components/AppBar.vue";
+import AppDrawer from "./components/AppDrawer.vue";
 
 export default {
   data() {
     return {};
   },
-  components: { AppFooter, AppBar },
+  components: { AppFooter, AppBar, AppDrawer },
   beforeCreate() {
     this.$store.commit("load");
     this.$store.commit("fetchData");
@@ -18,6 +19,7 @@ export default {
 <template>
   <v-app id="app">
     <AppBar v-if="!this.$store.state.theme.hide_appbar" />
+    <AppDrawer />
     <v-main app>
       <router-view />
     </v-main>
@@ -25,6 +27,6 @@ export default {
   </v-app>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "@/assets/style.scss";
 </style>
