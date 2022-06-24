@@ -85,7 +85,9 @@ export default {
       </v-card-actions>
     </v-card>
     <v-sheet v-else class="rounded-pill m-1" elevation="2" outlined>
-      <v-btn @click="editing = true" rounded text>+</v-btn>
+      <v-btn @click="editing = true" rounded text
+        ><span class="material-symbols-outlined"> add </span></v-btn
+      >
       <v-btn v-if="editing" rounded text>EDIT</v-btn>
     </v-sheet>
   </div>
