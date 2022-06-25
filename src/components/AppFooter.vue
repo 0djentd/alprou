@@ -21,9 +21,12 @@ export default {
           </router-link>
         </li>
       </ul>
-      <div v-if="!this.$store.state.theme.hide_api_links">
-        <v-divider />
-        <ul class="nav justify-content-center">
+      <div>
+        <v-divider v-if="!this.$store.state.theme.hide_api_links" />
+        <ul
+          class="nav justify-content-center"
+          v-if="!this.$store.state.theme.hide_api_links"
+        >
           <li class="nav-item" :key="link.url" v-for="link in api_links">
             <a :href="link.url" class="nav-link px-2 text-muted">
               {{ link.name }}
@@ -36,3 +39,14 @@ export default {
     </footer>
   </v-footer>
 </template>
+
+<style lang="scss" scoped>
+.v-footer,
+footer {
+  padding: 0;
+  margin: 0;
+}
+.v-divider {
+  margin: 2px 50px;
+}
+</style>
