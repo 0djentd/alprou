@@ -19,10 +19,11 @@ export default {
 
 <template>
   <div>
-    <v-navigation-drawer floating permanent absoulte style="max-width: 50px">
+    <v-navigation-drawer floating permanent class="drawer-menu">
       <v-btn @click="drawer = true" @mouseover="drawer = true">
-        <span class="material-symbols-outlined"> menu </span></v-btn
-      >
+        <span>Menu &ensp; </span>
+        <span class="material-symbols-outlined"> menu </span>
+      </v-btn>
     </v-navigation-drawer>
     <v-overlay
       @click="drawer = false"
@@ -39,13 +40,13 @@ export default {
       permanent
       absolute
     >
-      <v-list-item>
+      <!--       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h4"> Alprou </v-list-item-title>
           <v-list-item-subtitle> Habits tracker </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
-      <v-divider></v-divider>
+      <v-divider></v-divider> -->
       <v-list-item to="/settings">
         <v-list-item-content>
           <v-list-item-title>Profile</v-list-item-title>
@@ -77,5 +78,12 @@ export default {
 <style lang="scss" scoped>
 .v-navigation-drawer {
   max-width: 200px;
+}
+.drawer-menu {
+  position: absolute;
+  z-index: 1;
+  max-width: 100px;
+  max-height: 36px;
+  margin-top: 20px;
 }
 </style>

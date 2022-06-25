@@ -26,7 +26,7 @@ h4 {
   text-align: center;
 }
 .app-logo {
-  margin: 10px auto 20px auto;
+  margin: 30px auto 20px auto;
   padding: 8px 30px 2px 30px;
   border-radius: 6px;
   text-decoration: none;
