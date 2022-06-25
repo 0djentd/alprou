@@ -54,6 +54,12 @@ export default {
           clearable
         ></v-text-field>
         <v-text-field
+          :value="profile.url"
+          label="Profile url"
+          clearable
+          disabled
+        ></v-text-field>
+        <v-text-field
           v-model="profile.public_username"
           label="Public username"
           clearable

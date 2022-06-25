@@ -10,10 +10,10 @@ export default {
 <template>
   <v-container>
     <v-card>
-      <ThemeEditor />
+      <ProfileEditor />
     </v-card>
     <v-card>
-      <ProfileEditor />
+      <ThemeEditor />
     </v-card>
   </v-container>
 </template>
