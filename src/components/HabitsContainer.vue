@@ -53,19 +53,13 @@ export default {
     <div v-else class="d-flex flex-wrap">
       <v-skeleton-loader></v-skeleton-loader>
     </div>
-    <div class="habits-container-settings">
-      <v-sheet class="d-flex">
-        <v-spacer></v-spacer>
-        <h4 v-if="editing">Editing habits</h4>
-        <h4 v-else>{{ label }}</h4>
-        <v-spacer> </v-spacer>
-        <v-switch
-          color="grey"
-          label="Compact view"
-          v-model="compact"
-        ></v-switch>
-        <v-switch v-if="compact" label="Edit" v-model="editing"></v-switch>
-      </v-sheet>
+    <div class="habits-container-settings d-flex">
+      <v-spacer></v-spacer>
+      <h4 v-if="editing">Editing habits</h4>
+      <h4 v-else>{{ label }}</h4>
+      <v-spacer> </v-spacer>
+      <v-switch color="grey" label="Compact view" v-model="compact"></v-switch>
+      <v-switch v-if="compact" label="Edit" v-model="editing"></v-switch>
     </div>
   </div>
 </template>
@@ -73,13 +67,11 @@ export default {
 <style lang="scss" scoped>
 .habits-container-settings {
   margin-top: 20px;
-  .v-sheet {
-    * {
-      margin: 0 8px;
-    }
-    .v-switch {
-      color: grey;
-    }
+  * {
+    margin: 0 8px;
+  }
+  .v-switch {
+    color: grey;
   }
 }
 </style>
