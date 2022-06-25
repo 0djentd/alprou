@@ -165,34 +165,50 @@ export default {
         </div>
       </v-sheet>
       <div v-if="expanded">
-        <v-form>
-          <v-text-field
-            v-model="habit.name"
-            :counter="200"
-            label="Name"
-            autofocus
-            required
-          ></v-text-field>
-          <v-textarea
-            v-model="habit.description"
-            :counter="2000"
-            label="Description"
-            outlined
-          ></v-textarea>
-          <v-text-field
-            v-model="habit.tags"
-            :counter="2000"
-            label="Tags"
-            dense
-            outlined
-          ></v-text-field>
-          <v-checkbox v-model="habit.active" label="Active" />
-          <v-checkbox v-model="habit.negative" label="Negative" />
-          <v-checkbox v-model="habit.private" label="Private" />
-          <v-btn rounded outlined @click="patch()">Save</v-btn>
-          <v-btn rounded outlined @click="remove()">Remove</v-btn>
-          <v-btn rounded outlined @click="expanded = false">Back</v-btn>
-        </v-form>
+        <v-navigation-drawer
+          right
+          permanent
+          absolute
+          height="400px;"
+          class="habit-component-expanded"
+        >
+          <v-card>
+            <v-form>
+              <v-text-field
+                v-model="habit.name"
+                :counter="200"
+                label="Name"
+                autofocus
+                required
+              ></v-text-field>
+              <v-textarea
+                v-model="habit.description"
+                :counter="2000"
+                label="Description"
+                outlined
+              ></v-textarea>
+              <v-text-field
+                v-model="habit.tags"
+                :counter="2000"
+                label="Tags"
+                dense
+                outlined
+              ></v-text-field>
+              <v-checkbox v-model="habit.active" label="Active" />
+              <v-checkbox v-model="habit.negative" label="Negative" />
+              <v-checkbox v-model="habit.private" label="Private" />
+              <v-btn rounded outlined @click="patch()">Save</v-btn>
+              <v-btn rounded outlined @click="remove()">Remove</v-btn>
+              <v-btn rounded outlined @click="expanded = false">Back</v-btn>
+            </v-form>
+          </v-card>
+        </v-navigation-drawer>
+        <v-overlay
+          @click="expanded = false"
+          v-if="expanded"
+          value="expanded"
+          z-index="1"
+        ></v-overlay>
       </div>
     </div>
     <v-snackbar timeout="1500" v-model="message.show">
@@ -200,3 +216,13 @@ export default {
     </v-snackbar>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.habit-component-expanded {
+  z-index: 2;
+  position: fixed;
+  .v-card {
+    padding: 20px;
+  }
+}
+</style>
