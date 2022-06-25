@@ -39,7 +39,7 @@ export default {
 </script>
 
 <template>
-  <v-container>
+  <div class="habits-container">
     <div v-if="loaded" class="d-flex flex-wrap">
       <HabitComponent
         v-for="habit in habits"
@@ -53,20 +53,33 @@ export default {
     <div v-else class="d-flex flex-wrap">
       <v-skeleton-loader></v-skeleton-loader>
     </div>
-    <v-container class="habits-container-controls d-flex">
-      <h4 v-if="editing">Editing habits</h4>
-      <h4 v-else>{{ label }}</h4>
-      <v-spacer> </v-spacer>
-      <v-switch label="Compact view" v-model="compact"></v-switch>
-      <v-switch v-if="compact" label="Edit" v-model="editing"></v-switch>
-    </v-container>
-  </v-container>
+    <div class="habits-container-settings">
+      <v-sheet class="d-flex">
+        <v-spacer></v-spacer>
+        <h4 v-if="editing">Editing habits</h4>
+        <h4 v-else>{{ label }}</h4>
+        <v-spacer> </v-spacer>
+        <v-switch
+          color="grey"
+          label="Compact view"
+          v-model="compact"
+        ></v-switch>
+        <v-switch v-if="compact" label="Edit" v-model="editing"></v-switch>
+      </v-sheet>
+    </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-.habits-container-controls {
-  * {
-    margin: 0 8px;
+.habits-container-settings {
+  margin-top: 20px;
+  .v-sheet {
+    * {
+      margin: 0 8px;
+    }
+    .v-switch {
+      color: grey;
+    }
   }
 }
 </style>

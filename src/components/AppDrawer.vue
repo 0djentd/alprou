@@ -82,8 +82,10 @@ export default {
 .drawer-menu {
   position: absolute;
   z-index: 1;
-  max-width: 100px;
-  max-height: 36px;
-  margin-top: 20px;
+  max-width: 108px;
+  max-height: 38px;
+  margin-top: 56px;
+  border: 1px solid rgb(201, 201, 201);
+  border-radius: 2px;
 }
 </style>
