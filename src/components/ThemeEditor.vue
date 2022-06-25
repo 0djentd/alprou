@@ -27,9 +27,6 @@ export default {
     <v-card-text>
       <div>
         <v-checkbox label="Dark" v-model="$store.state.theme.dark" />
-        <v-checkbox label="Compact" v-model="$store.state.theme.compact" />
-      </div>
-      <div>
         <v-checkbox
           label="Hide appbar"
           v-model="$store.state.theme.hide_appbar"
