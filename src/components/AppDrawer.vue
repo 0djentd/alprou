@@ -57,7 +57,7 @@ export default {
       <v-list dense>
         <v-list-item
           v-for="item in router_links"
-          :key="item"
+          :key="item.id"
           :to="item.url"
           link
         >
