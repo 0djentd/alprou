@@ -125,6 +125,9 @@ export default {
             text
             >{{ habit.name }}</v-btn
           >
+          <v-btn @click="expanded = true" rounded>
+            <div class="material-symbols-outlined">more_horiz</div>
+          </v-btn>
         </div>
         <div v-else>
           <v-btn @click="expanded = true" rounded text>{{ habit.name }}</v-btn>
