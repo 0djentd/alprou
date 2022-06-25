@@ -15,7 +15,6 @@ export default {
     return {
       habits: [],
       loaded: false,
-      compact: this.$store.state.theme.compact,
       editing: false,
     };
   },
@@ -45,7 +44,6 @@ export default {
         v-for="habit in habits"
         :key="habit.id"
         :url="habit.url"
-        :compact="compact"
         :editing="editing"
       />
       <NewHabitComponent />
@@ -58,8 +56,7 @@ export default {
       <h4 v-if="editing">Editing habits</h4>
       <h4 v-else>{{ label }}</h4>
       <v-spacer> </v-spacer>
-      <v-switch color="grey" label="Compact view" v-model="compact"></v-switch>
-      <v-switch v-if="compact" label="Edit" v-model="editing"></v-switch>
+      <v-switch label="Edit" v-model="editing"></v-switch>
     </div>
   </div>
 </template>

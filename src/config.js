@@ -14,7 +14,6 @@ export function get_authorization_or_redirect() {
 
 export const default_theme = {
   dark: false,
-  compact: true,
   hide_appbar: false,
   hide_api_links: false,
 };

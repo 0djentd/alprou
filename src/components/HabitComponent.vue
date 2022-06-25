@@ -12,10 +12,6 @@ export default {
       type: Boolean,
       required: false,
     },
-    compact: {
-      type: Boolean,
-      required: false,
-    },
   },
   data() {
     return {
@@ -120,28 +116,7 @@ export default {
 <template>
   <div>
     <div v-if="!removed">
-      <v-card
-        elevation="4"
-        rounded
-        :loading="loading"
-        v-if="!expanded && !compact"
-        class="m-4 p-2"
-      >
-        <v-card-title>{{ habit.name }}</v-card-title>
-        <v-card-subtitle>{{ habit.user.username }}</v-card-subtitle>
-        <v-card-text>{{ habit.description }}</v-card-text>
-        <v-card-actions>
-          <v-btn
-            outlined
-            rounded
-            @click.prevent="done()"
-            :disabled="habit.completed_today"
-            >Done</v-btn
-          >
-          <v-btn outlined rounded @click="expanded = true">More</v-btn>
-        </v-card-actions>
-      </v-card>
-      <v-sheet v-if="compact" class="rounded-pill m-1" elevation="2" outlined>
+      <v-sheet class="rounded-pill m-1" elevation="2" outlined>
         <div v-if="!editing">
           <v-btn
             @click="done()"
