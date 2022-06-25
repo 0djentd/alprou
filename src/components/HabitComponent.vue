@@ -8,10 +8,6 @@ export default {
       type: String,
       required: true,
     },
-    editing: {
-      type: Boolean,
-      required: false,
-    },
   },
   data() {
     return {
@@ -117,7 +113,7 @@ export default {
   <div>
     <div v-if="!removed">
       <v-sheet class="rounded-pill m-1" elevation="2" outlined>
-        <div v-if="!editing">
+        <div>
           <v-btn
             @click="done()"
             :disabled="habit.completed_today"
@@ -128,9 +124,6 @@ export default {
           <v-btn @click="expanded = true" rounded>
             <div class="material-symbols-outlined">more_horiz</div>
           </v-btn>
-        </div>
-        <div v-else>
-          <v-btn @click="expanded = true" rounded text>{{ habit.name }}</v-btn>
         </div>
       </v-sheet>
       <div v-if="expanded">

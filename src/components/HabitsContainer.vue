@@ -15,7 +15,6 @@ export default {
     return {
       habits: [],
       loaded: false,
-      editing: false,
     };
   },
   async mounted() {
@@ -44,25 +43,16 @@ export default {
         v-for="habit in habits.filter((obj) => !obj.completed_today)"
         :key="habit.id"
         :url="habit.url"
-        :editing="editing"
       />
       <HabitComponent
         v-for="habit in habits.filter((obj) => obj.completed_today)"
         :key="habit.id"
         :url="habit.url"
-        :editing="editing"
       />
       <NewHabitComponent />
     </div>
     <div v-else class="d-flex flex-wrap">
       <v-skeleton-loader></v-skeleton-loader>
-    </div>
-    <div class="habits-container-settings d-flex">
-      <v-spacer></v-spacer>
-      <h4 v-if="editing">Editing habits</h4>
-      <h4 v-else>{{ label }}</h4>
-      <v-spacer> </v-spacer>
-      <v-switch label="Edit" v-model="editing"></v-switch>
     </div>
   </div>
 </template>
