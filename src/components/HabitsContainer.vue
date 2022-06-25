@@ -41,7 +41,13 @@ export default {
   <div class="habits-container">
     <div v-if="loaded" class="d-flex flex-wrap">
       <HabitComponent
-        v-for="habit in habits"
+        v-for="habit in habits.filter((obj) => !obj.completed_today)"
+        :key="habit.id"
+        :url="habit.url"
+        :editing="editing"
+      />
+      <HabitComponent
+        v-for="habit in habits.filter((obj) => obj.completed_today)"
         :key="habit.id"
         :url="habit.url"
         :editing="editing"

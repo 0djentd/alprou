@@ -56,39 +56,67 @@ export default {
 
 <template>
   <div>
-    <v-card v-if="editing" elevation="4" rounded class="m-4 p-2">
-      <v-alert v-if="errors">{{ errors }}</v-alert>
-      <v-text-field
-        v-model="habit.name"
-        :counter="200"
-        label="Name"
-        required
-      ></v-text-field>
-      <v-text-field
-        v-model="habit.description"
-        :counter="2000"
-        label="description"
-        outlined
-      ></v-text-field>
-      <v-text-field
-        v-model="habit.tags"
-        :counter="2000"
-        label="tags"
-        outlined
-      ></v-text-field>
-      <v-checkbox v-model="habit.active" label="Active" />
-      <v-checkbox v-model="habit.negative" label="Negative" />
-      <v-checkbox v-model="habit.public" label="Public" />
-      <v-card-actions>
-        <v-btn rounded outlined @click="put()">Create</v-btn>
-        <v-btn rounded outlined @click="reset()">Back</v-btn>
-      </v-card-actions>
-    </v-card>
-    <v-sheet v-else class="rounded-pill m-1" elevation="2" outlined>
+    <div v-if="editing">
+      <v-navigation-drawer
+        right
+        permanent
+        absolute
+        height="400px;"
+        class="habit-component-expanded"
+      >
+        <v-card>
+          <v-card-title>Create new</v-card-title>
+          <v-card-text>
+            <v-alert v-if="errors">{{ errors }}</v-alert>
+            <v-text-field
+              v-model="habit.name"
+              :counter="200"
+              label="Name"
+              required
+            ></v-text-field>
+            <v-text-field
+              v-model="habit.description"
+              :counter="2000"
+              label="description"
+              outlined
+            ></v-text-field>
+            <v-text-field
+              v-model="habit.tags"
+              :counter="2000"
+              label="tags"
+              outlined
+            ></v-text-field>
+            <v-checkbox v-model="habit.active" label="Active" />
+            <v-checkbox v-model="habit.negative" label="Negative" />
+            <v-checkbox v-model="habit.public" label="Public" />
+          </v-card-text>
+          <v-card-actions>
+            <v-btn rounded outlined @click="put()">Create</v-btn>
+            <v-btn rounded outlined @click="reset()">Back</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-navigation-drawer>
+      <v-overlay
+        @click="editing = false"
+        v-if="editing"
+        value="editing"
+        z-index="1"
+      ></v-overlay>
+    </div>
+    <v-sheet class="rounded-pill m-1" elevation="2" outlined>
       <v-btn @click="editing = true" rounded text
         ><span class="material-symbols-outlined"> add </span></v-btn
       >
-      <v-btn v-if="editing" rounded text>EDIT</v-btn>
     </v-sheet>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.habit-component-expanded {
+  z-index: 2;
+  position: fixed;
+  .v-card {
+    padding: 20px;
+  }
+}
+</style>

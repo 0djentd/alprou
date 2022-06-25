@@ -13,8 +13,8 @@ export function get_authorization_or_redirect() {
 }
 
 export const default_theme = {
-  dark: false,
-  hide_appbar: false,
+  dark: true,
+  hide_appbar: true,
   hide_api_links: false,
 };
 
