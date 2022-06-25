@@ -138,37 +138,48 @@ export default {
           right
           permanent
           absolute
-          height="400px;"
           class="habit-component-expanded"
         >
           <v-card>
+            <v-card-title>Editing '{{ habit.name }}'</v-card-title>
+            <v-card-subtitle
+              >url: <a :href="habit.url">{{ habit.url }}</a></v-card-subtitle
+            >
             <v-form>
-              <v-text-field
-                v-model="habit.name"
-                :counter="200"
-                label="Name"
-                autofocus
-                required
-              ></v-text-field>
-              <v-textarea
-                v-model="habit.description"
-                :counter="2000"
-                label="Description"
-                outlined
-              ></v-textarea>
-              <v-text-field
-                v-model="habit.tags"
-                :counter="2000"
-                label="Tags"
-                dense
-                outlined
-              ></v-text-field>
-              <v-checkbox v-model="habit.active" label="Active" />
-              <v-checkbox v-model="habit.negative" label="Negative" />
-              <v-checkbox v-model="habit.private" label="Private" />
-              <v-btn rounded outlined @click="patch()">Save</v-btn>
-              <v-btn rounded outlined @click="remove()">Remove</v-btn>
-              <v-btn rounded outlined @click="expanded = false">Back</v-btn>
+              <v-card-text>
+                <v-text-field
+                  v-model="habit.name"
+                  :counter="200"
+                  label="Name"
+                  autofocus
+                  required
+                ></v-text-field>
+                <v-textarea
+                  v-model="habit.description"
+                  :counter="2000"
+                  label="Description"
+                  outlined
+                ></v-textarea>
+                <v-text-field
+                  v-model="habit.tags"
+                  :counter="2000"
+                  label="Tags"
+                  dense
+                  outlined
+                ></v-text-field>
+                <div class="settings-row">
+                  <v-checkbox v-model="habit.active" label="Active" />
+                  <v-checkbox v-model="habit.negative" label="Negative" />
+                  <v-checkbox v-model="habit.private" label="Private" />
+                </div>
+                <p>Created: {{ habit.created }}</p>
+                <p>Modified: {{ habit.modified }}</p>
+              </v-card-text>
+              <v-card-actions>
+                <v-btn rounded outlined @click="patch()">Save</v-btn>
+                <v-btn rounded outlined @click="remove()">Remove</v-btn>
+                <v-btn rounded outlined @click="expanded = false">Back</v-btn>
+              </v-card-actions>
             </v-form>
           </v-card>
         </v-navigation-drawer>
@@ -190,8 +201,18 @@ export default {
 .habit-component-expanded {
   z-index: 2;
   position: fixed;
+  height: 100%;
+  min-width: 400px;
   .v-card {
     padding: 20px;
+  }
+}
+div.settings-row {
+  display: flex;
+  flex-flow: wrap;
+  * {
+    margin-left: 3px;
+    margin-right: 3px;
   }
 }
 </style>
