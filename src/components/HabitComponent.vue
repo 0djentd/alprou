@@ -127,30 +127,21 @@ export default {
         v-if="!expanded && !compact"
         class="m-4 p-2"
       >
-        <div v-if="!loading">
-          <div v-if="!expanded">
-            <v-card-title>{{ habit.name }}</v-card-title>
-            <v-card-subtitle>{{ habit.user.username }}</v-card-subtitle>
-            <v-card-text>{{ habit.description }}</v-card-text>
-            <v-card-actions>
-              <v-btn
-                outlined
-                rounded
-                @click.prevent="done()"
-                :disabled="habit.completed_today"
-                >Done</v-btn
-              >
-              <v-btn outlined rounded @click="expanded = true">More</v-btn>
-            </v-card-actions>
-          </div>
-        </div>
+        <v-card-title>{{ habit.name }}</v-card-title>
+        <v-card-subtitle>{{ habit.user.username }}</v-card-subtitle>
+        <v-card-text>{{ habit.description }}</v-card-text>
+        <v-card-actions>
+          <v-btn
+            outlined
+            rounded
+            @click.prevent="done()"
+            :disabled="habit.completed_today"
+            >Done</v-btn
+          >
+          <v-btn outlined rounded @click="expanded = true">More</v-btn>
+        </v-card-actions>
       </v-card>
-      <v-sheet
-        v-if="!expanded && compact"
-        class="rounded-pill m-1"
-        elevation="2"
-        outlined
-      >
+      <v-sheet v-if="compact" class="rounded-pill m-1" elevation="2" outlined>
         <div v-if="!editing">
           <v-btn
             @click="done()"
