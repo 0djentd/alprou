@@ -9,13 +9,20 @@ export default {
 
 <template>
   <v-container>
-    <v-sheet>
-      <v-card>
-        <ThemeEditor />
-      </v-card>
-      <v-card>
-        <ProfileEditor />
-      </v-card>
-    </v-sheet>
+    <v-card>
+      <ThemeEditor />
+    </v-card>
+    <v-card>
+      <ProfileEditor />
+    </v-card>
   </v-container>
 </template>
+
+<style lang="scss" scoped>
+.container {
+  .v-card {
+    margin: 20px auto;
+    border-radius: 20px;
+  }
+}
+</style>

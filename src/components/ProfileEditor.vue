@@ -60,7 +60,7 @@ export default {
         ></v-text-field>
         <v-checkbox v-model="profile.private" label="Private profile" />
         <v-card-actions>
-          <v-btn @click="save()" outlined text>Save</v-btn>
+          <v-btn @click="save()" rounded outlined text>Save</v-btn>
         </v-card-actions>
       </div>
       <v-skeleton-loader v-else type="card" />

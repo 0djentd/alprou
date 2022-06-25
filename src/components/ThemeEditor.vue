@@ -25,16 +25,20 @@ export default {
     <v-card-title>Theme</v-card-title>
     <v-card-subtitle>Change UI settings</v-card-subtitle>
     <v-card-text>
-      <v-checkbox label="Dark" v-model="$store.state.theme.dark" />
-      <v-checkbox label="Compact" v-model="$store.state.theme.compact" />
-      <v-checkbox
-        label="Hide appbar"
-        v-model="$store.state.theme.hide_appbar"
-      />
-      <v-checkbox
-        label="Hide API links"
-        v-model="$store.state.theme.hide_api_links"
-      />
+      <div>
+        <v-checkbox label="Dark" v-model="$store.state.theme.dark" />
+        <v-checkbox label="Compact" v-model="$store.state.theme.compact" />
+      </div>
+      <div>
+        <v-checkbox
+          label="Hide appbar"
+          v-model="$store.state.theme.hide_appbar"
+        />
+        <v-checkbox
+          label="Hide API links"
+          v-model="$store.state.theme.hide_api_links"
+        />
+      </div>
     </v-card-text>
     <v-card-actions>
       <v-btn @click="save_theme()" rounded text outlined>Save</v-btn>
@@ -42,3 +46,16 @@ export default {
     </v-card-actions>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.v-card__text {
+  padding-bottom: 0;
+  div {
+    margin: 0;
+    display: flex;
+    * {
+      margin-right: 20px;
+    }
+  }
+}
+</style>
