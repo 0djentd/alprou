@@ -20,9 +20,6 @@ export const default_theme = {
 
 export const router_links = [
   { url: "/", name: "Home", icon: "home" },
-  { url: "/login/", name: "Login", icon: "login" },
-  { url: "/logout/", name: "Logout", icon: "logout" },
-  { url: "/registration/", name: "Registration", icon: "manage_accounts" },
   { url: "/settings/", name: "Settings", icon: "settings" },
   { url: "/welcome/", name: "New user", icon: "help" },
   { url: "/about/", name: "About", icon: "info" },

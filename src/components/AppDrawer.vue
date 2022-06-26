@@ -70,6 +70,38 @@ export default {
             <v-list-item-title>{{ item.name }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+
+        <!-- Profile login/logout/registration -->
+        <v-list-item v-if="user" to="/logout/" link>
+          <v-list-item-icon
+            ><span class="material-symbols-outlined">
+              logout
+            </span></v-list-item-icon
+          >
+          <v-list-item-content>
+            <v-list-item-title>Logout</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item v-if="!user" to="/login/" link>
+          <v-list-item-icon
+            ><span class="material-symbols-outlined">
+              login
+            </span></v-list-item-icon
+          >
+          <v-list-item-content>
+            <v-list-item-title>Login</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item v-if="!user" to="/registration/" link>
+          <v-list-item-icon
+            ><span class="material-symbols-outlined">
+              manage_accounts
+            </span></v-list-item-icon
+          >
+          <v-list-item-content>
+            <v-list-item-title>Registration</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
   </div>

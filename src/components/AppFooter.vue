@@ -6,7 +6,11 @@ export default {
       year: 2022,
       router_links: router_links,
       api_links: api_links,
+      user: null,
     };
+  },
+  async mounted() {
+    this.user = await this.$store.getters.user;
   },
 };
 </script>
@@ -18,6 +22,22 @@ export default {
         <li class="nav-item" :key="link.url" v-for="link in router_links">
           <router-link :to="link.url" class="nav-link px-2 text-muted">
             {{ link.name }}
+          </router-link>
+        </li>
+        <!-- Profile login/logout/registration -->
+        <li v-if="user">
+          <router-link to="/logout/" class="nav-link px-2 text-muted">
+            Logout
+          </router-link>
+        </li>
+        <li v-if="!user">
+          <router-link to="/login/" class="nav-link px-2 text-muted">
+            Login
+          </router-link>
+        </li>
+        <li v-if="!user">
+          <router-link to="/registration/" class="nav-link px-2 text-muted">
+            Registration
           </router-link>
         </li>
       </ul>
