@@ -26,6 +26,7 @@ export const router_links = [
 ];
 
 export const api_links = [
+  { url: "https://github.com/0djentd/alprou", name: "Source code" },
   { url: "http://localhost:8000/docs/redoc/", name: "API docs (1)" },
   { url: "http://localhost:8000/docs/swagger/", name: "API docs (2)" },
   { url: "http://localhost:8000/api/habits/", name: "habits" },
