@@ -5,7 +5,7 @@ export function get_authorization_or_redirect() {
   const token = localStorage.getItem("token");
   if (token == null) {
     // console.log("No token");
-    window.location.href = "/login";
+    window.location.href = "/login/";
   }
   const authorization = "Token " + token;
   // console.log('Authorization: "' + authorization + '"');
@@ -20,8 +20,9 @@ export const default_theme = {
 
 export const router_links = [
   { url: "/", name: "Home", icon: "home" },
+  { url: "/welcome/", name: "Welcome", icon: "help" },
+  { url: "/habits/", name: "Habits", icon: "home" },
   { url: "/settings/", name: "Settings", icon: "settings" },
-  { url: "/welcome/", name: "New user", icon: "help" },
   { url: "/about/", name: "About", icon: "info" },
 ];
 

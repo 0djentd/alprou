@@ -1,11 +1,11 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import axios from "axios";
 import {
   api_url,
   default_theme,
   get_authorization_or_redirect,
 } from "@/config";
+import axios from "axios";
+import Vue from "vue";
+import Vuex from "vuex";
 
 Vue.use(Vuex);
 
@@ -27,6 +27,9 @@ export default new Vuex.Store({
           Authorization: get_authorization_or_redirect(),
         },
       }).then((res) => res.data.pk);
+      if (profile_id == undefined) {
+        return null;
+      }
       const profile = await axios({
         url: api_url + "profiles/" + profile_id + "/",
         method: "GET",
@@ -45,6 +48,9 @@ export default new Vuex.Store({
           Authorization: get_authorization_or_redirect(),
         },
       }).then((res) => res.data.pk);
+      if (profile_id == undefined) {
+        return null;
+      }
       const profile = await axios({
         url: api_url + "profiles/" + profile_id + "/",
         method: "GET",
