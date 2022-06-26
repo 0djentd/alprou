@@ -1,12 +1,13 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import HomeView from "@/views/HomeView.vue";
 import AboutView from "@/views/AboutView.vue";
+import HabitsView from "@/views/HabitsView.vue";
+import HomeView from "@/views/HomeView.vue";
 import LoginView from "@/views/LoginView.vue";
 import LogoutView from "@/views/LogoutView.vue";
 import RegistrationView from "@/views/RegistrationView.vue";
-import WelcomeView from "@/views/WelcomeView.vue";
 import SettingsView from "@/views/SettingsView.vue";
+import WelcomeView from "@/views/WelcomeView.vue";
+import Vue from "vue";
+import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,11 @@ const routes = [
     path: "/",
     name: "home",
     component: HomeView,
+  },
+  {
+    path: "/habits/",
+    name: "habits",
+    component: HabitsView,
   },
   {
     path: "/login/",

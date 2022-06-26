@@ -1,3 +1,67 @@
+<script>
+export default {
+  data() {
+    return {
+      features: [
+        {
+          title: "Habits tracker",
+          description: "Users can track their habits using minimalistic UI.",
+          img: null,
+        },
+        {
+          title: "Stats",
+          description: "Users can take a look at various statistics.",
+          img: null,
+        },
+        {
+          title: "User profiles",
+          description: "Some settings like habits visibility to other users.",
+          img: null,
+        },
+        {
+          title: "SPA",
+          description: "No page reloads when using this app.",
+          img: null,
+        },
+        {
+          title: "Themes",
+          description: "Some UI settings.",
+          img: null,
+        },
+      ],
+    };
+  },
+};
+</script>
+
 <template>
-  <div></div>
+  <v-container>
+    <v-card>
+      <v-card-title>Welcome!</v-card-title>
+      <v-card-text>
+        <p>Take a look at some of the features of Alprou:</p>
+        <v-sheet v-for="feature in features" :key="feature.id">
+          <h5>{{ feature.title }}</h5>
+          <p>{{ feature.description }}</p>
+          <v-img v-if="feature.img" :src="feature.img" />
+        </v-sheet>
+        <p>
+          To use this app,
+          <router-link to="/registration/"> create an account</router-link>.
+        </p>
+        <p></p>
+        <p>
+          You can also take a look at the source code on
+          <a href="https://github.com/0djentd/">my github</a>.
+        </p>
+      </v-card-text>
+    </v-card>
+  </v-container>
 </template>
+
+<style lang="scss" scoped>
+.v-card {
+  max-width: 300px;
+  margin: 0 auto;
+}
+</style>
