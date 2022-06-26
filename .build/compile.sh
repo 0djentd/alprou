@@ -6,4 +6,5 @@ npm run lint
 npm run build
 cp -r dist .build/dist
 git checkout build
-cp -r .build/dist build
+mkdir build
+cp -r .build/dist/* build/
