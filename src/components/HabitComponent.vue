@@ -136,7 +136,8 @@ export default {
           <v-card>
             <v-card-title>Editing '{{ habit.name }}'</v-card-title>
             <v-card-subtitle
-              >url: <a :href="habit.url">{{ habit.url }}</a></v-card-subtitle
+              >API url:
+              <a :href="habit.url">{{ habit.url }}</a></v-card-subtitle
             >
             <v-form>
               <v-card-text>
@@ -198,14 +199,6 @@ export default {
   min-width: 400px;
   .v-card {
     padding: 20px;
-  }
-}
-div.settings-row {
-  display: flex;
-  flex-flow: wrap;
-  * {
-    margin-left: 3px;
-    margin-right: 3px;
   }
 }
 </style>

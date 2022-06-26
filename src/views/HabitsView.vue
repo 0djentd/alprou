@@ -13,7 +13,7 @@ export default {
   },
   async mounted() {
     const user = await this.$store.getters.user;
-    this.url = api_url + "habits/?user=" + user.id;
+    this.url = api_url + "habits/?user=" + user.id + "&active=true";
   },
 };
 </script>

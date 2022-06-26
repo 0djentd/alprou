@@ -21,3 +21,10 @@
 .habit-component {
   max-width: 400px;
 }
+div.settings-row {
+  margin-top: 4px;
+  display: flex;
+  * {
+    margin:  0 2px;
+  }
+}
