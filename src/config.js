@@ -7,11 +7,41 @@ export const default_theme = {
 };
 
 export const router_links = [
-  { url: "/", name: "Home", icon: "home" },
-  { url: "/welcome/", name: "Welcome", icon: "help" },
-  { url: "/habits/", name: "Habits", icon: "home" },
-  { url: "/settings/", name: "Settings", icon: "settings" },
-  { url: "/about/", name: "About", icon: "info" },
+  {
+    requires_authentication: false,
+    no_auth: true,
+    url: "/",
+    name: "Home",
+    icon: "home",
+  },
+  {
+    requires_authentication: false,
+    no_auth: false,
+    url: "/welcome/",
+    name: "Welcome",
+    icon: "help",
+  },
+  {
+    requires_authentication: true,
+    no_auth: false,
+    url: "/habits/",
+    name: "Habits",
+    icon: "home",
+  },
+  {
+    requires_authentication: true,
+    no_auth: false,
+    url: "/settings/",
+    name: "Settings",
+    icon: "settings",
+  },
+  {
+    requires_authentication: false,
+    no_auth: false,
+    url: "/about/",
+    name: "About",
+    icon: "info",
+  },
 ];
 
 export const api_links = [
