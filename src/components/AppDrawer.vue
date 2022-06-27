@@ -11,8 +11,8 @@ export default {
     };
   },
   async mounted() {
-    this.profile = await this.$store.getters.profile;
-    this.user = await this.$store.getters.user;
+    this.profile = this.$store.state.authorization.profile;
+    this.user = this.$store.state.authorization.user;
   },
 };
 </script>

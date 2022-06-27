@@ -11,8 +11,8 @@ export default {
   },
   methods: {
     async fetchData() {
-      this.profile = await this.$store.getters.profile;
-      this.user = await this.$store.getters.user;
+      this.profile = this.$store.state.authorization.profile;
+      this.user = this.$store.state.authorization.user;
       this.loading = false;
     },
     async save() {

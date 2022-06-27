@@ -10,7 +10,7 @@ export default {
     };
   },
   async mounted() {
-    this.user = await this.$store.getters.user;
+    this.user = this.$store.state.authorization.user;
   },
 };
 </script>
