@@ -46,10 +46,10 @@ export default {
         </li>
       </ul>
       <div>
-        <v-divider v-if="!this.$store.state.theme.hide_api_links" />
+        <v-divider v-if="!this.$store.state.theme.theme.hide_api_links" />
         <ul
           class="nav justify-content-center"
-          v-if="!this.$store.state.theme.hide_api_links"
+          v-if="!this.$store.state.theme.theme.hide_api_links"
         >
           <li class="nav-item" :key="link.url" v-for="link in api_links">
             <a :href="link.url" class="nav-link px-2 text-muted">

@@ -26,14 +26,14 @@ export default {
     <v-card-subtitle>Change UI settings</v-card-subtitle>
     <v-card-text>
       <div>
-        <v-checkbox label="Dark" v-model="$store.state.theme.dark" />
+        <v-checkbox label="Dark" v-model="$store.state.theme.theme.dark" />
         <v-checkbox
           label="Hide appbar"
-          v-model="$store.state.theme.hide_appbar"
+          v-model="$store.state.theme.theme.hide_appbar"
         />
         <v-checkbox
           label="Hide API links"
-          v-model="$store.state.theme.hide_api_links"
+          v-model="$store.state.theme.theme.hide_api_links"
         />
       </div>
     </v-card-text>

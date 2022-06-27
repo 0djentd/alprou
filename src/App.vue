@@ -9,7 +9,7 @@ export default {
   components: { AppFooter, AppDrawer, AppLogo },
   async beforeCreate() {
     await this.$store.dispatch("relogin");
-    this.$vuetify.theme.dark = this.$store.state.theme.dark;
+    this.$vuetify.theme.dark = this.$store.state.theme.theme.dark;
   },
 };
 </script>
