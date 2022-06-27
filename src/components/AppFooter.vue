@@ -6,11 +6,15 @@ export default {
       year: 2022,
       router_links: router_links,
       api_links: api_links,
-      user: null,
     };
   },
-  async mounted() {
-    this.user = this.$store.state.authorization.user;
+  computed: {
+    user() {
+      return this.$store.state.authorization.user;
+    },
+    profile() {
+      return this.$store.state.authorization.profile;
+    },
   },
 };
 </script>

@@ -5,14 +5,16 @@ export default {
     return {
       drawer: false,
       mini: false,
-      profile: { username: "username" },
-      user: null,
       router_links: router_links,
     };
   },
-  async mounted() {
-    this.profile = this.$store.state.authorization.profile;
-    this.user = this.$store.state.authorization.user;
+  computed: {
+    user() {
+      return this.$store.state.authorization.user;
+    },
+    profile() {
+      return this.$store.state.authorization.profile;
+    },
   },
 };
 </script>
