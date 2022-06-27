@@ -16,10 +16,10 @@ export const router_links = [
 
 export const api_links = [
   { url: "https://github.com/0djentd/alprou", name: "Source code" },
-  { url: "http://localhost:8000/docs/redoc/", name: "API docs (1)" },
-  { url: "http://localhost:8000/docs/swagger/", name: "API docs (2)" },
-  { url: "http://localhost:8000/api/habits/", name: "habits" },
-  { url: "http://localhost:8000/api/profiles/", name: "profiles" },
-  { url: "http://localhost:8000/api/users/", name: "users" },
-  { url: "http://localhost:8000/api/days/", name: "days" },
+  { url: "/docs/redoc/", name: "API docs (1)" },
+  { url: "/docs/swagger/", name: "API docs (2)" },
+  { url: "/api/habits/", name: "habits" },
+  { url: "/api/profiles/", name: "profiles" },
+  { url: "/api/users/", name: "users" },
+  { url: "/api/days/", name: "days" },
 ];
