@@ -1,6 +1,5 @@
 <script>
 import axios from "axios";
-import { get_authorization_or_redirect } from "@/config";
 export default {
   name: "HabitComponent",
   props: {
@@ -36,7 +35,7 @@ export default {
         method: "PATCH",
         data: {},
         headers: {
-          Authorization: get_authorization_or_redirect(),
+          Authorization: this.$store.getters.token_str,
         },
       })
         .then((res) => {
@@ -57,7 +56,7 @@ export default {
         url: this.habit.url,
         method: "DELETE",
         headers: {
-          Authorization: get_authorization_or_redirect(),
+          Authorization: this.$store.getters.token_str,
         },
       }).then((res) => {
         console.log(res);
@@ -73,7 +72,7 @@ export default {
         url: this.habit.url,
         method: "PATCH",
         headers: {
-          Authorization: get_authorization_or_redirect(),
+          Authorization: this.$store.getters.token_str,
         },
         data: data,
       }).then((res) => {
@@ -92,7 +91,7 @@ export default {
         url: this.url,
         method: "GET",
         headers: {
-          Authorization: get_authorization_or_redirect(),
+          Authorization: this.$store.getters.token_str,
         },
       }).then((res) => {
         this.habit = res.data;

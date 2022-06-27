@@ -12,8 +12,11 @@ export default {
     };
   },
   async mounted() {
-    const user = await this.$store.getters.user;
-    this.url = api_url + "habits/?user=" + user.id + "&active=true";
+    this.url =
+      api_url +
+      "habits/?user=" +
+      this.$store.state.authorization.user.id +
+      "&active=true";
   },
 };
 </script>

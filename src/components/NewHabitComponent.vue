@@ -1,6 +1,6 @@
 <script>
 import axios from "axios";
-import { api_url, get_authorization_or_redirect } from "@/config";
+import { api_url } from "@/config";
 export default {
   name: "NewHabitComponent",
   data() {
@@ -24,7 +24,7 @@ export default {
         url: api_url + "habits/",
         method: "POST",
         headers: {
-          Authorization: get_authorization_or_redirect(),
+          Authorization: this.$store.getters.token_str,
         },
         data: data,
       })

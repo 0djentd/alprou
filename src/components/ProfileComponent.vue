@@ -1,5 +1,4 @@
 <script>
-import { get_authorization_or_redirect } from "@/config";
 import HabitComponent from "@/components/HabitComponent.vue";
 import axios from "axios";
 export default {
@@ -19,7 +18,7 @@ export default {
         url: this.url,
         method: "GET",
         headers: {
-          Authorization: get_authorization_or_redirect(),
+          Authorization: this.$store.getters.token_str,
         },
       })
         .then((res) => {
@@ -30,7 +29,7 @@ export default {
         url: this.profile.user,
         method: "GET",
         headers: {
-          Authorization: get_authorization_or_redirect(),
+          Authorization: this.$store.getters.token_str,
         },
       })
         .then((res) => {
