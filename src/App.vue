@@ -7,8 +7,13 @@ export default {
     return {};
   },
   components: { AppFooter, AppDrawer, AppLogo },
+  computed: {
+    loading() {
+      return this.$store.state.authorization.loading;
+    },
+  },
   async beforeCreate() {
-    await this.$store.dispatch("relogin");
+    this.$store.dispatch("relogin");
     this.$store.commit("loadTheme");
     this.$vuetify.theme.dark = this.$store.state.theme.theme.dark;
   },
@@ -20,7 +25,7 @@ export default {
     <AppDrawer />
     <AppLogo />
     <v-main app>
-      <router-view />
+      <router-view v-if="!loading" />
     </v-main>
     <AppFooter />
   </v-app>

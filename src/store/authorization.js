@@ -12,6 +12,7 @@ export function get_token_str(token) {
 
 export default {
   state: {
+    loading: true,
     token: null,
     user: null,
     profile: null,
@@ -26,6 +27,9 @@ export default {
     },
     saveProfile(state, profile) {
       state.profile = profile;
+    },
+    saveLoading(state, loading) {
+      state.loading = loading;
     },
   },
   getters: {
@@ -109,6 +113,7 @@ export default {
           console.error(error);
         });
       commit("saveUser", user);
+      commit("saveLoading", false);
     },
   },
 };
