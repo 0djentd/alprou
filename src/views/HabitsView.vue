@@ -11,12 +11,12 @@ export default {
       url: null,
     };
   },
-  async mounted() {
-    this.url =
-      api_url +
-      "habits/?user=" +
-      this.$store.state.authorization.user.id +
-      "&active=true";
+  mounted() {
+    const user = this.$store.state.authorization.user;
+    if (!user) {
+      this.$router.push("/welcome/");
+    }
+    this.url = api_url + "habits/?user=" + user.id + "&active=true";
   },
 };
 </script>

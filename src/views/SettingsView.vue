@@ -1,9 +1,17 @@
 <script>
+import { api_url } from "@/config";
 import ProfileEditor from "@/components/ProfileEditor.vue";
 import ThemeEditor from "@/components/ThemeEditor.vue";
 
 export default {
   components: { ThemeEditor, ProfileEditor },
+  mounted() {
+    const user = this.$store.state.authorization.user;
+    if (!user) {
+      this.$router.push("/welcome/");
+    }
+    this.url = api_url + "habits/?user=" + user.id + "&active=true";
+  },
 };
 </script>
 
