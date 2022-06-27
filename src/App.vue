@@ -7,9 +7,8 @@ export default {
     return {};
   },
   components: { AppFooter, AppDrawer, AppLogo },
-  beforeCreate() {
-    this.$store.commit("load");
-    this.$store.commit("fetchData");
+  async beforeCreate() {
+    await this.$store.dispatch("relogin");
     this.$vuetify.theme.dark = this.$store.state.theme.dark;
   },
 };

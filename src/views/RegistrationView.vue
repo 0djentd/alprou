@@ -20,6 +20,11 @@ export default {
       }
     },
   },
+  mounted() {
+    if (this.$store.getters.authenticated) {
+      this.$router.push("/");
+    }
+  },
 };
 </script>
 

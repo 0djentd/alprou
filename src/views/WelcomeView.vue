@@ -4,18 +4,19 @@ export default {
     return {
       features: [
         {
-          title: "Habits tracker",
-          description: "Users can track their habits using minimalistic UI.",
+          title: "Minimalistic UI",
+          description: "Designed for mobile devices and desktop",
           img: null,
         },
         {
           title: "Stats",
-          description: "Users can take a look at various statistics.",
+          description: "Take a look at various statistics.",
           img: null,
         },
         {
           title: "User profiles",
-          description: "Some settings like habits visibility to other users.",
+          description:
+            "Settings like habits/profile visibility to other users.",
           img: null,
         },
         {
@@ -25,7 +26,7 @@ export default {
         },
         {
           title: "Themes",
-          description: "Some UI settings.",
+          description: "Change some UI settings.",
           img: null,
         },
       ],
@@ -48,7 +49,9 @@ export default {
           <p></p>
           <p>
             You can also take a look at the source code on my
-            <a href="https://github.com/0djentd/">github</a>.
+            <a href="https://github.com/0djentd/">github</a>. or learn more
+            about
+            <router-link to="/about/#about-api">Alprou's API</router-link>.
           </p>
         </v-card-text>
       </v-card>

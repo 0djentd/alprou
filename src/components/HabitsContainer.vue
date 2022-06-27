@@ -2,7 +2,6 @@
 import axios from "axios";
 import HabitComponent from "./HabitComponent.vue";
 import NewHabitComponent from "../components/NewHabitComponent.vue";
-import { get_authorization_or_redirect } from "@/config";
 
 export default {
   name: "HabitsContainer",
@@ -22,7 +21,7 @@ export default {
       url: this.url,
       method: "GET",
       headers: {
-        Authorization: get_authorization_or_redirect(),
+        Authorization: this.$store.getters.token_str,
       },
     })
       .then((res) => {

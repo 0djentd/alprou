@@ -1,7 +1,7 @@
 <script>
 export default {
   async mounted() {
-    const user = await this.$store.getters.user;
+    const user = this.$store.state.authorization.user;
     if (user) {
       this.$router.push("/habits/");
     } else {

@@ -1,5 +1,4 @@
 <script>
-import { get_authorization_or_redirect } from "@/config";
 import axios from "axios";
 export default {
   data() {
@@ -12,8 +11,8 @@ export default {
   },
   methods: {
     async fetchData() {
-      this.profile = await this.$store.getters.profile;
-      this.user = await this.$store.getters.user;
+      this.profile = this.$store.state.authorization.profile;
+      this.user = this.$store.state.authorization.user;
       this.loading = false;
     },
     async save() {
@@ -21,7 +20,7 @@ export default {
         url: this.user.url,
         method: "PATCH",
         headers: {
-          Authorization: get_authorization_or_redirect(),
+          Authorization: this.$store.getters.token_str,
         },
         data: this.user,
       });
@@ -29,7 +28,7 @@ export default {
         url: this.profile.url,
         method: "PATCH",
         headers: {
-          Authorization: get_authorization_or_redirect(),
+          Authorization: this.$store.getters.token_str,
         },
         data: this.profile,
       });
