@@ -1,20 +1,16 @@
-<script setup lang="ts"></script>
 <script>
-import HabitsContainer from "../components/HabitsContainer.vue";
 export default {
-  data() {
-    return {
-      habits: 123,
-    };
-  },
-  components: {
-    HabitsContainer,
+  async mounted() {
+    const user = await this.$store.getters.user;
+    if (user) {
+      this.$router.push("/habits/");
+    } else {
+      this.$router.push("/welcome/");
+    }
   },
 };
 </script>
 
 <template>
-  <main>
-    <HabitsContainer />
-  </main>
+  <div></div>
 </template>

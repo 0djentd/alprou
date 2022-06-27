@@ -1,26 +1,31 @@
-<script lang="ts">
+<script>
 import AppFooter from "./components/AppFooter.vue";
+import AppDrawer from "./components/AppDrawer.vue";
+import AppLogo from "./components/AppLogo.vue";
 export default {
   data() {
-    return {
-      year: 2022,
-      links: [
-        { url: "/", name: "Home" },
-        { url: "/profile", name: "Profile" },
-        { url: "/new_habit", name: "New Habit" },
-        { url: "/about/", name: "About" },
-      ],
-    };
+    return {};
   },
-  components: { AppFooter },
+  components: { AppFooter, AppDrawer, AppLogo },
+  beforeCreate() {
+    this.$store.commit("load");
+    this.$store.commit("fetchData");
+    this.$vuetify.theme.dark = this.$store.state.theme.dark;
+  },
 };
 </script>
 
 <template>
-  <RouterView />
-  <AppFooter :links="links" :year="year" />
+  <v-app id="app">
+    <AppDrawer />
+    <AppLogo />
+    <v-main app>
+      <router-view />
+    </v-main>
+    <AppFooter />
+  </v-app>
 </template>
 
-<style>
-@import "@/assets/style.css";
+<style lang="scss">
+@import "@/assets/style.scss";
 </style>

@@ -1,21 +1,28 @@
 <script>
-import axios from 'axios';
+import axios from "axios";
 import HabitComponent from "./HabitComponent.vue";
+import NewHabitComponent from "../components/NewHabitComponent.vue";
+import { get_authorization_or_redirect } from "@/config";
+
 export default {
-  components: { HabitComponent },
+  name: "HabitsContainer",
+  components: { HabitComponent, NewHabitComponent },
+  props: {
+    url: { type: String, required: true },
+    label: { type: String, required: false },
+  },
   data() {
     return {
       habits: [],
       loaded: false,
     };
   },
-  mounted() {
-    const authorization = "Token " + localStorage.getItem("token");
+  async mounted() {
     axios({
-      url: "http://localhost:8000/api/habits/",
+      url: this.url,
       method: "GET",
       headers: {
-        Authorization: authorization,
+        Authorization: get_authorization_or_redirect(),
       },
     })
       .then((res) => {
@@ -23,22 +30,46 @@ export default {
         this.loaded = true;
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   },
 };
 </script>
 
 <template>
-  <div v-if="loaded" class="habits-container card">
-    <HabitComponent v-for="habit in habits" :key="habit.id" :id="habit.id" />
+  <div class="habits-container">
+    <div>
+      <p>
+        API url: <a :href="this.url">{{ this.url }}</a>
+      </p>
+    </div>
+    <div v-if="loaded" class="d-flex flex-wrap">
+      <HabitComponent
+        v-for="habit in habits.filter((obj) => !obj.completed_today)"
+        :key="habit.id"
+        :url="habit.url"
+      />
+      <HabitComponent
+        v-for="habit in habits.filter((obj) => obj.completed_today)"
+        :key="habit.id"
+        :url="habit.url"
+      />
+      <NewHabitComponent />
+    </div>
+    <div v-else class="d-flex flex-wrap">
+      <v-skeleton-loader></v-skeleton-loader>
+    </div>
   </div>
 </template>
 
-<style scoped>
-.habits-container {
-  min-height: 300px;
-  min-width: 500px;
-  margin: 0 50px;
+<style lang="scss" scoped>
+.habits-container-settings {
+  margin-top: 20px;
+  * {
+    margin: 0 8px;
+  }
+  .v-switch {
+    color: grey;
+  }
 }
 </style>

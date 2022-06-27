@@ -1,69 +1,55 @@
 <script>
-import axios from "axios";
-import { useProfileDataStore } from "../stores/profile_data";
 export default {
   data() {
     return {
       username: "",
       password: "",
       remember: false,
-      profile_data: useProfileDataStore(),
     };
   },
   methods: {
     login() {
-      const url = "http://localhost:8000/api/authtoken/";
-      axios({
-        url: url,
-        method: "POST",
-        data: {
-          username: this.username,
-          password: this.password,
-        },
-      })
-        .then((res) => {
-          const token = res.data.token;
-          window.location.href = "/";
-          localStorage.setItem("token", token);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+      this.$store.commit("login", {
+        username: this.username,
+        password: this.password,
+      });
+      this.$router.push("/");
     },
   },
 };
 </script>
 
 <template>
-  <main class="w-50 m-auto">
-    <h1>Login</h1>
-    <form>
-      <div>
-        <input id="username" placeholder="Username" v-model="this.username" />
-      </div>
-      <div>
-        <input
+  <v-container>
+    <v-card max-width="300px" rounded class="mx-auto">
+      <v-card-title>Login</v-card-title>
+      <v-card-subtitle
+        >or register
+        <router-link to="/registration"
+          >new profile</router-link
+        ></v-card-subtitle
+      >
+      <v-card-text>
+        <v-text-field id="username" placeholder="Username" v-model="username" />
+        <v-text-field
           type="password"
           id="password"
           placeholder="Password"
-          v-model="this.password"
+          v-model="password"
         />
-      </div>
-      <input
-        type="checkbox"
-        name="remember"
-        id="remember"
-        v-model="this.remember"
-      />
-      <label for="remember">Remember</label>
-      <button
-        action=""
-        method=""
-        class="btn btn-primary"
-        @click.prevent="login"
-      >
-        Login
-      </button>
-    </form>
-  </main>
+        <v-card-actions>
+          <v-btn
+            rounded
+            outlined
+            text
+            action=""
+            method=""
+            @click.prevent="login"
+          >
+            Login
+          </v-btn>
+        </v-card-actions>
+      </v-card-text>
+    </v-card>
+  </v-container>
 </template>
