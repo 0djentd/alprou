@@ -8,8 +8,7 @@ export default {
   },
   components: { AppFooter, AppDrawer, AppLogo },
   beforeCreate() {
-    this.$store.commit("load");
-    this.$store.commit("fetchData");
+    this.$store.dispatch("relogin");
     this.$vuetify.theme.dark = this.$store.state.theme.dark;
   },
 };

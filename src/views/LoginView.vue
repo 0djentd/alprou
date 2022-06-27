@@ -9,11 +9,11 @@ export default {
   },
   methods: {
     login() {
-      this.$store.commit("login", {
+      this.$store.dispatch("login", {
         username: this.username,
         password: this.password,
       });
-      this.$router.push("/");
+      //this.$router.push("/");
     },
   },
 };
