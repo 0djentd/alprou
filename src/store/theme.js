@@ -4,18 +4,18 @@ export default {
     theme: default_theme,
   },
   mutations: {
-    load(state) {
+    loadTheme(state) {
       const theme = JSON.parse(
         localStorage.getItem("settings-theme", default_theme)
       );
       state.theme = theme;
     },
-    save(state) {
+    saveTheme(state) {
       const theme = JSON.stringify(state.theme);
       console.log(theme);
       localStorage.setItem("settings-theme", theme);
     },
-    reset(state) {
+    resetTheme(state) {
       const theme = JSON.stringify(default_theme);
       state.theme = theme;
       localStorage.setItem("settings-theme", theme);
