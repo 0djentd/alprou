@@ -2,7 +2,7 @@
 
 npm run lint
 npm run build
-git checkout dist
+git checkout origin/dist
 rm -r build/alprou-frontend
 cp -r dist build/alprou-frontend
 # sed -i 's/href="\//href="\/static\//g' build/index.html
