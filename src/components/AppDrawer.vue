@@ -15,6 +15,9 @@ export default {
     profile() {
       return this.$store.state.authorization.profile;
     },
+    authenticated() {
+      return this.$store.getters.authenticated;
+    },
   },
 };
 </script>
@@ -49,10 +52,18 @@ export default {
         </v-list-item-content>
       </v-list-item>
       <v-divider></v-divider> -->
-      <v-list-item to="/settings">
+      <v-list-item to="/settings/" v-if="authenticated">
         <v-list-item-content>
-          <v-list-item-title>Profile</v-list-item-title>
+          <v-list-item-title>Profile:</v-list-item-title>
           <v-list-item-subtitle> {{ user.username }}</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item to="/welcome/" v-else>
+        <v-list-item-content>
+          <v-list-item-title>Welcome!</v-list-item-title>
+          <v-list-item-subtitle
+            >Please login or create an account.</v-list-item-subtitle
+          >
         </v-list-item-content>
       </v-list-item>
       <v-divider></v-divider>
@@ -74,7 +85,7 @@ export default {
         </v-list-item>
 
         <!-- Profile login/logout/registration -->
-        <v-list-item v-if="user" to="/logout/" link>
+        <v-list-item v-if="authenticated" to="/logout/" link>
           <v-list-item-icon
             ><span class="material-symbols-outlined">
               logout
@@ -84,7 +95,7 @@ export default {
             <v-list-item-title>Logout</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item v-if="!user" to="/login/" link>
+        <v-list-item v-if="!authenticated" to="/login/" link>
           <v-list-item-icon
             ><span class="material-symbols-outlined">
               login
@@ -94,7 +105,7 @@ export default {
             <v-list-item-title>Login</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item v-if="!user" to="/registration/" link>
+        <v-list-item v-if="!authenticated" to="/registration/" link>
           <v-list-item-icon
             ><span class="material-symbols-outlined">
               manage_accounts
