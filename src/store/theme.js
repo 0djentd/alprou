@@ -8,7 +8,9 @@ export default {
       const theme = JSON.parse(
         localStorage.getItem("settings-theme", default_theme)
       );
-      state.theme = theme;
+      if (theme) {
+        state.theme = theme;
+      }
     },
     saveTheme(state) {
       const theme = JSON.stringify(state.theme);
