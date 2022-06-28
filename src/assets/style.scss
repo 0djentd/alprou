@@ -28,3 +28,12 @@ div.settings-row {
     margin:  0 2px;
   }
 }
+.habit-component-expanded {
+  z-index: 2;
+  position: fixed;
+  height: 100%;
+  min-width: 400px;
+  .v-card {
+    padding: 20px;
+  }
+}
