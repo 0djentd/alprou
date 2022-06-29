@@ -49,7 +49,7 @@ export default {
           <p></p>
           <p>
             You can also take a look at the source code on my
-            <a href="https://github.com/0djentd/">github</a>. or learn more
+            <a href="https://github.com/0djentd/">github</a>, or learn more
             about
             <router-link to="/about/#about-api">Alprou's API</router-link>.
           </p>
