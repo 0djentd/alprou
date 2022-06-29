@@ -3,6 +3,22 @@ export default {
     logo: {
       description_short: "Minimalistic habits tracker.",
     },
+    editor: {
+      editing: "Editing:",
+      new: "Create new habit",
+      name: "Name",
+      description: "Description",
+      tags: "Tags",
+      active: "Active",
+      negative: "Negative",
+      private: "Private",
+      created: "created:",
+      modified: "modified:",
+      create: "Save",
+      patch: "Save",
+      remove: "Remove",
+      back: "back",
+    },
     pages: {
       home: {
         title: "Home",
@@ -71,6 +87,22 @@ export default {
   ru: {
     logo: {
       description_short: "Минималистичный трекер привычек.",
+    },
+    editor: {
+      editing: "Редактировать привычку:",
+      new: "Создать новую привычку",
+      name: "Название",
+      description: "Описание",
+      tags: "Тэги",
+      active: "Показывать на главной странице",
+      negative: "Отрицательная",
+      private: "Не отображать для других пользователей",
+      created: "создано:",
+      modified: "изменено:",
+      create: "Создать",
+      patch: "Сохранить",
+      remove: "Удалить",
+      back: "Назад",
     },
     pages: {
       home: {

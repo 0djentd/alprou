@@ -64,34 +64,48 @@ export default {
         class="habit-component-expanded"
       >
         <v-card>
-          <v-card-title>Create new</v-card-title>
+          <v-card-title>{{ $t("editor.new") }}</v-card-title>
           <v-card-text>
             <v-alert v-if="errors">{{ errors }}</v-alert>
             <v-text-field
               v-model="habit.name"
               :counter="200"
-              label="Name"
+              :label="$t('editor.name')"
+              autofocus
               required
             ></v-text-field>
-            <v-text-field
+            <v-textarea
               v-model="habit.description"
               :counter="2000"
-              label="description"
+              :label="$t('editor.description')"
               outlined
-            ></v-text-field>
+            ></v-textarea>
             <v-text-field
               v-model="habit.tags"
               :counter="2000"
-              label="tags"
+              :label="$t('editor.tags')"
+              dense
               outlined
             ></v-text-field>
-            <v-checkbox v-model="habit.active" label="Active" />
-            <v-checkbox v-model="habit.negative" label="Negative" />
-            <v-checkbox v-model="habit.public" label="Public" />
+            <div class="settings-row">
+              <v-checkbox v-model="habit.active" :label="$t('editor.active')" />
+              <v-checkbox
+                v-model="habit.negative"
+                :label="$t('editor.negative')"
+              />
+              <v-checkbox
+                v-model="habit.private"
+                :label="$t('editor.private')"
+              />
+            </div>
           </v-card-text>
           <v-card-actions>
-            <v-btn rounded outlined @click="put()">Create</v-btn>
-            <v-btn rounded outlined @click="reset()">Back</v-btn>
+            <v-btn rounded outlined @click="put()">
+              {{ $t("editor.create") }}</v-btn
+            >
+            <v-btn rounded outlined @click="reset()">{{
+              $t("editor.back")
+            }}</v-btn>
           </v-card-actions>
         </v-card>
       </v-navigation-drawer>
