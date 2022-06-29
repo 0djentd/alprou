@@ -62,10 +62,12 @@ export default {
       }
       dispatch("fetchData", token);
     },
-    async relogin({ dispatch }) {
+    async relogin({ commit, dispatch }) {
       const token = localStorage.getItem("token");
       if (token != "null") {
         dispatch("fetchData", token);
+      } else {
+        commit("saveLoading", false);
       }
     },
     async logout({ commit }) {
