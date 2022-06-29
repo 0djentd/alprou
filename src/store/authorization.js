@@ -85,7 +85,7 @@ export default {
       commit("saveLoading", true);
 
       const profile_id = await axios({
-        url: api_url + "profiles/get_user_profile_id/",
+        url: api_url + "profiles/profile_id/",
         method: "GET",
         headers: {
           Authorization: get_token_str(token),
@@ -102,9 +102,7 @@ export default {
         },
       })
         .then((response) => response.data)
-        .catch((error) => {
-          console.error(error);
-        });
+        .catch((error) => console.error(error));
       commit("saveProfile", profile);
 
       const user = await axios({
