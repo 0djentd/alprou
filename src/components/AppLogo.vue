@@ -24,7 +24,7 @@ export default {
         <h4>Alprou</h4>
         <v-divider />
       </div>
-      <p>Minimalistic habits tracker.</p>
+      <p>{{ $t("general.description_short") }}</p>
     </a>
     <v-divider />
   </div>
