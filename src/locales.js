@@ -54,6 +54,17 @@ export default {
       },
       registration: {
         title: "Registration",
+        or: {
+          text: "Already have an account? ",
+          link: "Login",
+        },
+        form: {
+          username: "Username",
+          email: "Email",
+          password_1: "Password",
+          password_2: "Repeat password",
+          button: "Create an account",
+        },
       },
     },
   },
@@ -112,6 +123,17 @@ export default {
       },
       registration: {
         title: "Зарегистрироваться",
+        or: {
+          text: "Уже есть аккаунт? ",
+          link: "Войти",
+        },
+        form: {
+          username: "Имя пользователя",
+          email: "Email",
+          password_1: "Пароль",
+          password_2: "Повторите пароль",
+          button: "Создать аккаунт",
+        },
       },
     },
   },
