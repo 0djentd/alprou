@@ -109,3 +109,15 @@ export default {
     </v-sheet>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.habit-component-expanded {
+  z-index: 2;
+  position: fixed;
+  height: 100%;
+  min-width: 400px;
+  .v-card {
+    padding: 20px;
+  }
+}
+</style>
