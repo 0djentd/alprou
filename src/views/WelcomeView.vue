@@ -39,24 +39,35 @@ export default {
   <v-container>
     <div class="welcome d-flex flex-wrap flex-lg-nowrap">
       <v-card class="welcome-info">
-        <v-card-title>Welcome!</v-card-title>
+        <v-card-title>{{ $t("pages.about.text.info.title") }}</v-card-title>
         <v-card-text>
           <p>
-            To use this app, please
-            <router-link to="/login/"> login</router-link> or
-            <router-link to="/registration/"> create an account</router-link>.
+            {{ $t("pages.about.text.info.subtitle.1") }}
+            <router-link to="/login/">
+              {{ $t("pages.about.text.info.subtitle.2") }}</router-link
+            >
+            {{ $t("pages.about.text.info.subtitle.3") }}
+            <router-link to="/registration/">
+              {{ $t("pages.about.text.info.subtitle.4") }}
+            </router-link>
           </p>
           <p></p>
           <p>
-            You can also take a look at the source code on my
-            <a href="https://github.com/0djentd/">github</a>, or learn more
-            about
-            <router-link to="/about/#about-api">Alprou's API</router-link>.
+            {{ $t("pages.about.text.info.subtitle.5") }}
+            <a href="https://github.com/0djentd/">
+              {{ $t("pages.about.text.info.subtitle.6") }}
+            </a>
+            {{ $t("pages.about.text.info.subtitle.7") }}
+            <router-link to="/about/#about-api">
+              {{ $t("pages.about.text.info.subtitle.8") }}
+            </router-link>
           </p>
         </v-card-text>
       </v-card>
       <v-card class="welcome-features">
-        <v-card-title> Some of the features: </v-card-title>
+        <v-card-title>
+          {{ $t("pages.about.text.features.title") }}
+        </v-card-title>
         <v-card-text>
           <v-sheet v-for="feature in features" :key="feature.id">
             <h5>{{ feature.title }}</h5>
@@ -66,7 +77,9 @@ export default {
         </v-card-text>
       </v-card>
       <v-card class="welcome-screenshot">
-        <v-card-title>Screenshots</v-card-title>
+        <v-card-title>{{
+          $t("pages.about.text.screenshots.title")
+        }}</v-card-title>
         <div class="screenshot-container">
           <v-img class="screenshot" src="/screenshot_alprou.png"></v-img>
         </div>
