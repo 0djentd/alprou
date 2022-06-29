@@ -9,6 +9,11 @@ export default {
           img: null,
         },
         {
+          title: "Multiple languages",
+          description: "App available in multiple languages.",
+          img: null,
+        },
+        {
           title: "Stats",
           description: "Take a look at various statistics.",
           img: null,
