@@ -133,7 +133,9 @@ export default {
           class="habit-component-expanded"
         >
           <v-card>
-            <v-card-title>Editing '{{ habit.name }}'</v-card-title>
+            <v-card-title
+              >{{ $t("editor.editing") }} '{{ habit.name }}'</v-card-title
+            >
             <v-card-subtitle
               >API url:
               <a :href="habit.url">{{ habit.url }}</a></v-card-subtitle
@@ -143,35 +145,50 @@ export default {
                 <v-text-field
                   v-model="habit.name"
                   :counter="200"
-                  label="Name"
+                  :label="$t('editor.name')"
                   autofocus
                   required
                 ></v-text-field>
                 <v-textarea
                   v-model="habit.description"
                   :counter="2000"
-                  label="Description"
+                  :label="$t('editor.description')"
                   outlined
                 ></v-textarea>
                 <v-text-field
                   v-model="habit.tags"
                   :counter="2000"
-                  label="Tags"
+                  :label="$t('editor.tags')"
                   dense
                   outlined
                 ></v-text-field>
                 <div class="settings-row">
-                  <v-checkbox v-model="habit.active" label="Active" />
-                  <v-checkbox v-model="habit.negative" label="Negative" />
-                  <v-checkbox v-model="habit.private" label="Private" />
+                  <v-checkbox
+                    v-model="habit.active"
+                    :label="$t('editor.active')"
+                  />
+                  <v-checkbox
+                    v-model="habit.negative"
+                    :label="$t('editor.negative')"
+                  />
+                  <v-checkbox
+                    v-model="habit.private"
+                    :label="$t('editor.private')"
+                  />
                 </div>
-                <p>Created: {{ habit.created }}</p>
-                <p>Modified: {{ habit.modified }}</p>
+                <p>{{ $t("editor.created") }} {{ habit.created }}</p>
+                <p>{{ $t("editor.modified") }} {{ habit.modified }}</p>
               </v-card-text>
               <v-card-actions>
-                <v-btn rounded outlined @click="patch()">Save</v-btn>
-                <v-btn rounded outlined @click="remove()">Remove</v-btn>
-                <v-btn rounded outlined @click="expanded = false">Back</v-btn>
+                <v-btn rounded outlined @click="patch()">
+                  {{ $t("editor.patch") }}
+                </v-btn>
+                <v-btn rounded outlined @click="remove()">
+                  {{ $t("editor.remove") }}
+                </v-btn>
+                <v-btn rounded outlined @click="expanded = false">
+                  {{ $t("editor.back") }}
+                </v-btn>
               </v-card-actions>
             </v-form>
           </v-card>
@@ -179,8 +196,9 @@ export default {
         <v-overlay
           @click="expanded = false"
           v-if="expanded"
+          class="habit-component-expanded-overlay"
           value="expanded"
-          z-index="1"
+          z-index="0"
         ></v-overlay>
       </div>
     </div>

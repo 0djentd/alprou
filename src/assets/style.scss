@@ -21,9 +21,10 @@
 .habit-component {
   max-width: 400px;
 }
-div.settings-row {
+.settings-row {
   margin-top: 4px;
   display: flex;
+  flex-wrap: wrap;
   * {
     margin:  0 2px;
   }

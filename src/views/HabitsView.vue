@@ -6,17 +6,16 @@ export default {
   components: {
     HabitsContainer,
   },
-  data() {
-    return {
-      url: null,
-    };
-  },
-  mounted() {
-    const user = this.$store.state.authorization.user;
-    if (!user) {
-      this.$router.push("/welcome/");
-    }
-    this.url = api_url + "habits/?user=" + user.id + "&active=true";
+  computed: {
+    url() {
+      const user = this.$store.state.authorization.user;
+      if (user) {
+        const url = api_url + "habits/?user=" + user.id + "&active=true";
+        return url;
+      } else {
+        return null;
+      }
+    },
   },
 };
 </script>

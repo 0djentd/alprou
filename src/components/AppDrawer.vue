@@ -68,21 +68,23 @@ export default {
       </v-list-item>
       <v-divider></v-divider>
       <v-list dense>
-        <v-list-item
-          v-for="item in router_links"
-          :key="item.id"
-          :to="item.url"
-          link
-        >
-          <v-list-item-icon
-            ><span class="material-symbols-outlined">
-              {{ item.icon }}
-            </span></v-list-item-icon
+        <div v-for="item in router_links" :key="item.id">
+          <v-list-item
+            :to="item.url"
+            link
+            v-if="(!item.no_auth && !authenticated) || authenticated"
+            :disabled="item.requires_authentication && !authenticated"
           >
-          <v-list-item-content>
-            <v-list-item-title>{{ item.name }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+            <v-list-item-icon
+              ><span class="material-symbols-outlined">
+                {{ item.icon }}
+              </span></v-list-item-icon
+            >
+            <v-list-item-content>
+              <v-list-item-title>{{ item.name }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </div>
 
         <!-- Profile login/logout/registration -->
         <v-list-item v-if="authenticated" to="/logout/" link>

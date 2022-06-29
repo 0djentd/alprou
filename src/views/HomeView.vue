@@ -1,8 +1,8 @@
 <script>
 export default {
   async mounted() {
-    const user = this.$store.state.authorization.user;
-    if (user) {
+    const authenticated = this.$store.getters.authenticated;
+    if (authenticated) {
       this.$router.push("/habits/");
     } else {
       this.$router.push("/welcome/");

@@ -1,4 +1,5 @@
 # Alprou
+![screenshot](public/screenshot_alprou.png)
 ## Description
 Minimalistic habits tracker.
 

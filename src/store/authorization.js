@@ -2,16 +2,16 @@ import axios from "axios";
 import { api_url } from "@/config";
 
 export function get_token_str(token) {
-  if (token == null) {
-    // window.location.href = "/login/";
+  if (token == null || token == "null") {
+    return null;
+  } else {
+    return "Token " + token;
   }
-  const authorization = "Token " + token;
-  // console.log('Authorization: "' + authorization + '"');
-  return authorization;
 }
 
 export default {
   state: {
+    loading: true,
     token: null,
     user: null,
     profile: null,
@@ -27,6 +27,9 @@ export default {
     saveProfile(state, profile) {
       state.profile = profile;
     },
+    saveLoading(state, loading) {
+      state.loading = loading;
+    },
   },
   getters: {
     authenticated(state) {
@@ -40,6 +43,7 @@ export default {
   },
   actions: {
     async login({ dispatch, commit }, data) {
+      let error = null;
       console.log("Trying to login as " + data.username);
       const token = await axios({
         url: api_url + "authtoken/",
@@ -47,21 +51,26 @@ export default {
         data: data,
       })
         .then((response) => response.data.token)
-        .catch((error) => {
-          console.error(error);
+        .catch((err) => {
+          error = err;
+          console.error(err);
           return null;
         });
       if (token == null) {
         console.error("Login failed");
+        console.error(error);
         commit("saveToken", null);
         return;
       }
       dispatch("fetchData", token);
+      window.location.href = "/";
     },
-    async relogin({ dispatch }) {
+    async relogin({ commit, dispatch }) {
       const token = localStorage.getItem("token");
-      if (token != "null") {
+      if (token != "null" && token != null) {
         dispatch("fetchData", token);
+      } else {
+        commit("saveLoading", false);
       }
     },
     async logout({ commit }) {
@@ -73,6 +82,7 @@ export default {
     },
     async fetchData({ commit }, token) {
       commit("saveToken", token);
+      commit("saveLoading", true);
 
       const profile_id = await axios({
         url: api_url + "profiles/get_user_profile_id/",
@@ -109,6 +119,7 @@ export default {
           console.error(error);
         });
       commit("saveUser", user);
+      commit("saveLoading", false);
     },
   },
 };
