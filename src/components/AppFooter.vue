@@ -1,5 +1,7 @@
 <script>
 import { api_links, router_links } from "@/config";
+import AppLanguageSwitcher from "@/components/AppLanguageSwitcher.vue";
+
 export default {
   data() {
     return {
@@ -15,6 +17,9 @@ export default {
     profile() {
       return this.$store.state.authorization.profile;
     },
+  },
+  components: {
+    AppLanguageSwitcher,
   },
 };
 </script>
@@ -43,6 +48,9 @@ export default {
           <router-link to="/registration/" class="nav-link px-2 text-muted">
             Registration
           </router-link>
+        </li>
+        <li class="nav-item">
+          <AppLanguageSwitcher />
         </li>
       </ul>
       <div>
