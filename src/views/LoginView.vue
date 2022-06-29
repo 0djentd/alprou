@@ -34,25 +34,22 @@ export default {
         ></v-card-subtitle
       >
       <v-card-text>
-        <v-text-field id="username" placeholder="Username" v-model="username" />
-        <v-text-field
-          type="password"
-          id="password"
-          placeholder="Password"
-          v-model="password"
-        />
-        <v-card-actions>
-          <v-btn
-            rounded
-            outlined
-            text
-            action=""
-            method=""
-            @click.prevent="login"
-          >
+        <form action="submit" @submit.prevent="login">
+          <v-text-field
+            id="username"
+            placeholder="Username"
+            v-model="username"
+          />
+          <v-text-field
+            type="password"
+            id="password"
+            placeholder="Password"
+            v-model="password"
+          />
+          <v-btn rounded outlined text action="" method="" @click="login">
             Login
           </v-btn>
-        </v-card-actions>
+        </form>
       </v-card-text>
     </v-card>
   </v-container>

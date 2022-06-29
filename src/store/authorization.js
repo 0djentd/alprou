@@ -63,6 +63,7 @@ export default {
         return;
       }
       dispatch("fetchData", token);
+      window.location.href = "/";
     },
     async relogin({ commit, dispatch }) {
       const token = localStorage.getItem("token");
