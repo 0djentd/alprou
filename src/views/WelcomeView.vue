@@ -37,7 +37,7 @@ export default {
 
 <template>
   <v-container>
-    <div class="welcome">
+    <div class="welcome d-flex flex-wrap flex-lg-nowrap">
       <v-card class="welcome-info">
         <v-card-title>Welcome!</v-card-title>
         <v-card-text>
@@ -65,20 +65,36 @@ export default {
           </v-sheet>
         </v-card-text>
       </v-card>
+      <v-card class="welcome-screenshot">
+        <v-card-title>Screenshots</v-card-title>
+        <div class="screenshot-container">
+          <v-img class="screenshot" src="/screenshot_alprou.png"></v-img>
+        </div>
+      </v-card>
     </div>
   </v-container>
 </template>
 
 <style lang="scss" scoped>
 .welcome {
-  display: flex;
-  flex-wrap: wrap;
   align-items: flex-start;
+  justify-content: space-between;
+  .v-card {
+    margin: 10px;
+  }
   .welcome-info {
     max-width: 300px;
   }
   .welcome-features {
     max-width: 700px;
+  }
+  .welcome-screenshot {
+    .screenshot-container {
+      padding: 10px;
+      .screenshot {
+        border-radius: 20px;
+      }
+    }
   }
 }
 .v-card {
