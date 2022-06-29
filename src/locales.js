@@ -24,7 +24,7 @@ export default {
             },
           },
           features: {
-            title: "Some of the features:",
+            title: "Features",
           },
           screenshots: {
             title: "Screenshots",
@@ -93,7 +93,7 @@ export default {
             },
           },
           features: {
-            title: "Ключевой функционал:",
+            title: "Ключевой функционал",
           },
           screenshots: {
             title: "Скриншоты",
