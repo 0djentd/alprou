@@ -24,7 +24,7 @@ export default {
         <h4>Alprou</h4>
         <v-divider />
       </div>
-      <p>{{ $t("general.description_short") }}</p>
+      <p>{{ $t("logo.description_short") }}</p>
     </a>
     <v-divider />
   </div>
@@ -41,8 +41,8 @@ h4 {
   text-align: center;
 }
 .app-logo {
-  margin: 30px auto 20px auto;
-  padding: 8px 30px 2px 30px;
+  margin: 24px auto 0 auto;
+  padding: 8px 0 2px 0;
   border-radius: 6px;
   text-decoration: none;
   a {

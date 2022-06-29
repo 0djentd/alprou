@@ -1,6 +1,6 @@
 export default {
   en: {
-    general: {
+    logo: {
       description_short: "Minimalistic habits tracker.",
     },
     pages: {
@@ -69,7 +69,7 @@ export default {
     },
   },
   ru: {
-    general: {
+    logo: {
       description_short: "Минималистичный трекер привычек.",
     },
     pages: {
