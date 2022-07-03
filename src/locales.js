@@ -46,6 +46,33 @@ export default {
             title: "Screenshots",
           },
         },
+        features: {
+          ui: {
+            title: "Minimalistic UI",
+            description: "Designed for mobile devices and desktop",
+          },
+          languages: {
+            title: "Multiple languages",
+            description: "App available in multiple languages.",
+          },
+          stats: {
+            title: "Stats",
+            description: "Take a look at various statistics.",
+          },
+          profiles: {
+            title: "User profiles",
+            description:
+              "Settings like habits/profile visibility to other users.",
+          },
+          spa: {
+            title: "SPA",
+            description: "No page reloads when using this app.",
+          },
+          themes: {
+            title: "Themes",
+            description: "Change some UI settings.",
+          },
+        },
       },
       habits: {
         title: "Habits",
@@ -129,6 +156,35 @@ export default {
           },
           screenshots: {
             title: "Скриншоты",
+          },
+        },
+        features: {
+          ui: {
+            title: "Минималистичный интерфейс",
+            description: "Разработан для мобильных устройств и браузера.",
+          },
+          languages: {
+            title: "Несколько языков",
+            description:
+              "Пользователь может выбрать язык, на котором будет отображаться сайт.",
+          },
+          stats: {
+            title: "Статистика",
+            description:
+              "У пользователя есть возможность просмотреть различную статистику по своим привычкам.",
+          },
+          profiles: {
+            title: "Профили",
+            description:
+              "Такие настройки, как видимость профиля другим пользователям.",
+          },
+          spa: {
+            title: "SPA",
+            description: "No page reloads when using this app.",
+          },
+          themes: {
+            title: "Темы",
+            description: "Возможность изменить настройки интерфейса.",
           },
         },
       },

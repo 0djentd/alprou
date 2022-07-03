@@ -4,34 +4,33 @@ export default {
     return {
       features: [
         {
-          title: "Minimalistic UI",
-          description: "Designed for mobile devices and desktop",
+          title: this.$t("pages.about.features.ui.title"),
+          description: this.$t("pages.about.features.ui.description"),
           img: null,
         },
         {
-          title: "Multiple languages",
-          description: "App available in multiple languages.",
+          title: this.$t("pages.about.features.languages.title"),
+          description: this.$t("pages.about.features.languages.description"),
           img: null,
         },
         {
-          title: "Stats",
-          description: "Take a look at various statistics.",
+          title: this.$t("pages.about.features.stats.title"),
+          description: this.$t("pages.about.features.stats.description"),
           img: null,
         },
         {
-          title: "User profiles",
-          description:
-            "Settings like habits/profile visibility to other users.",
+          title: this.$t("pages.about.features.profiles.title"),
+          description: this.$t("pages.about.features.profiles.description"),
           img: null,
         },
         {
-          title: "SPA",
-          description: "No page reloads when using this app.",
+          title: this.$t("pages.about.features.spa.title"),
+          description: this.$t("pages.about.features.spa.description"),
           img: null,
         },
         {
-          title: "Themes",
-          description: "Change some UI settings.",
+          title: this.$t("pages.about.features.themes.title"),
+          description: this.$t("pages.about.features.themes.description"),
           img: null,
         },
       ],
