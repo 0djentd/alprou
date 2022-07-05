@@ -45,10 +45,22 @@ export default {
     async login({ dispatch, commit }, data) {
       let error = null;
       console.log("Trying to login as " + data.username);
+      function getCookieValue(name) {
+        const decoded = decodeURIComponent(document.cookie); //to be careful
+        const cookies = decoded.split("; ");
+        let res;
+        cookies.forEach((val) => {
+          if (val.indexOf(name + "=") === 0) {
+            res = val.substring(name.length + 1);
+          }
+        });
+        return res;
+      }
       const token = await axios({
         url: api_url + "authtoken/",
         method: "POST",
         data: data,
+        headers: { "X-CSRFToken": getCookieValue("csrftoken") },
       })
         .then((response) => response.data.token)
         .catch((err) => {
