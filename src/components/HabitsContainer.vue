@@ -37,11 +37,11 @@ export default {
 
 <template>
   <div class="habits-container">
-    <div>
+    <!-- <div>
       <p>
         API url: <a :href="this.url">{{ this.url }}</a>
       </p>
-    </div>
+    </div> -->
     <div v-if="loaded" class="d-flex flex-wrap">
       <HabitComponent
         v-for="habit in habits.filter((obj) => !obj.completed_today)"
