@@ -6,19 +6,10 @@ export default {
       password: "",
       password_2: "",
       email: "",
-
-      errors: {
-        password: [],
-      },
     };
   },
   methods: {
-    registration() {
-      if (this.password != this.password_2) {
-        this.errors.password = ["Passwords do not match."];
-        return;
-      }
-    },
+    registration() {},
   },
   mounted() {
     if (this.$store.getters.authenticated) {
@@ -52,14 +43,6 @@ export default {
             v-model="email"
             dense
           />
-          <v-alert
-            v-for="error in errors.password"
-            :key="error"
-            dismissible
-            type="error"
-          >
-            {{ error }}
-          </v-alert>
           <div class="settings-row d-flex">
             <v-text-field
               type="password"
