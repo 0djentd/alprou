@@ -63,9 +63,9 @@ export default {
                 {{ $t("pages.about.text.info.subtitle.6") }}
               </a>
               {{ $t("pages.about.text.info.subtitle.7") }}
-              <router-link to="/about/#about-api">
+              <a href="/docs/swagger/">
                 {{ $t("pages.about.text.info.subtitle.8") }}
-              </router-link>
+              </a>
             </p>
           </v-card-text>
         </v-card>
