@@ -1,6 +1,18 @@
 import axios from "axios";
 import { api_url } from "@/config";
 
+export function getCookieValue(name) {
+  const decoded = decodeURIComponent(document.cookie); //to be careful
+  const cookies = decoded.split("; ");
+  let res;
+  cookies.forEach((val) => {
+    if (val.indexOf(name + "=") === 0) {
+      res = val.substring(name.length + 1);
+    }
+  });
+  return res;
+}
+
 export function get_token_str(token) {
   if (token == null || token == "null") {
     return null;
@@ -45,17 +57,6 @@ export default {
     async login({ dispatch, commit }, data) {
       let error = null;
       console.log("Trying to login as " + data.username);
-      function getCookieValue(name) {
-        const decoded = decodeURIComponent(document.cookie); //to be careful
-        const cookies = decoded.split("; ");
-        let res;
-        cookies.forEach((val) => {
-          if (val.indexOf(name + "=") === 0) {
-            res = val.substring(name.length + 1);
-          }
-        });
-        return res;
-      }
       const token = await axios({
         url: api_url + "authtoken/",
         method: "POST",

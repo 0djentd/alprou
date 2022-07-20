@@ -1,4 +1,7 @@
 <script>
+import axios from "axios";
+import { getCookieValue } from "@/store/authorization";
+import { api_url } from "@/config";
 export default {
   data() {
     return {
@@ -9,7 +12,26 @@ export default {
     };
   },
   methods: {
-    registration() {},
+    registration() {
+      let error = null;
+      let data = {
+        username: this.username,
+        password: this.password,
+        email: this.email,
+      };
+      axios({
+        url: api_url + "register/",
+        method: "POST",
+        data: data,
+        headers: { "X-CSRFToken": getCookieValue("csrftoken") },
+      })
+        .then((response) => response.data)
+        .catch((err) => {
+          error = err;
+        });
+      console.error(error);
+      window.location.href = "/";
+    },
   },
   mounted() {
     if (this.$store.getters.authenticated) {
