@@ -9,6 +9,7 @@ export default {
       password: "",
       password_2: "",
       email: "",
+      errors: null,
     };
   },
   methods: {
@@ -29,8 +30,12 @@ export default {
         .catch((err) => {
           error = err;
         });
-      console.error(error);
-      window.location.href = "/";
+      if (error) {
+        this.errors = error.response.data;
+        console.error(error);
+      } else {
+        window.location.href = "/";
+      }
     },
   },
   mounted() {
@@ -52,6 +57,7 @@ export default {
         }}</router-link></v-card-subtitle
       >
       <v-card-text>
+        <v-alert v-if="errors">{{ errors }}</v-alert>
         <form action="">
           <v-text-field
             id="username"
